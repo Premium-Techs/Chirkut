@@ -2,11 +2,16 @@ package com.premiumtechs.chirkut;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import android.content.Context;
 import android.os.Bundle;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
@@ -27,7 +32,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        /*db.execSQL("DROP TABLE IF EXISTS"+PROFILE_TABLE_NAME);
+        onCreate(db);*/
+    }
+    public void insertProfile(Profile profile){
+        SQLiteDatabase db=this.getWritableDatabase();
+        ContentValues contentValues=new ContentValues();
+        contentValues.put(PROFILE_COLUMN_NAME,profile.getProfileName());
+        contentValues.put(PROFILE_COLUMN_BIO,profile.getProfileBio());
+        db.insert(PROFILE_TABLE_NAME,null,contentValues);
+    }
+    public List<Profile>getAllProfile(){
+        List<Profile>profiles=new ArrayList<>();
+        SQLiteDatabase db=this.getWritableDatabase();
+        Cursor cursor=db.query(PROFILE_TABLE_NAME,null,null,null,null,null,null);
+        while (cursor.moveToNext()){
+            String profileName=cursor.getString(cursor.getColumnIndex(PROFILE_COLUMN_NAME));
+            String profileBio=cursor.getString(cursor.getColumnIndex(PROFILE_COLUMN_BIO));
+            profiles.add(new Profile(profileName,profileBio));
+        }
+        return profiles;
     }
 
 }
