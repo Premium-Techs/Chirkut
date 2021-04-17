@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Chirkut">
-        <activity android:name=".Settings"></activity>
+        <activity android:name=".Task"></activity>
+        <activity android:name=".DatabaseHelper" />
+        <activity android:name=".Settings" />
         <activity
             android:name=".UpdateProfile"
             android:label="@string/title_activity_update_profile"
