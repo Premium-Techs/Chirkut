@@ -49,9 +49,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db=this.getWritableDatabase();
         Cursor cursor=db.query(PROFILE_TABLE_NAME,null,null,null,null,null,null);
         while (cursor.moveToNext()){
+            String profileId=cursor.getString(cursor.getColumnIndex(PROFILE_COLUMN_ID));
             String profileName=cursor.getString(cursor.getColumnIndex(PROFILE_COLUMN_NAME));
             String profileBio=cursor.getString(cursor.getColumnIndex(PROFILE_COLUMN_BIO));
-            profiles.add(new Profile(profileName,profileBio));
+            profiles.add(new Profile(profileId,profileName,profileBio));
         }
         return profiles;
     }
