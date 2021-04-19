@@ -9,8 +9,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
+import android.widget.TextView;
+
+import java.util.List;
 
 public class UpdateProfile extends AppCompatActivity {
+    private DatabaseHelper databaseHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +24,16 @@ public class UpdateProfile extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = findViewById(R.id.fab);
+
+        //Mimma
+        databaseHelper=new DatabaseHelper(this.getApplicationContext());
+        List<Profile>profiles=databaseHelper.getAllProfile();
+        TextView tvProfile=(TextView) findViewById(R.id.tvProfile);
+        StringBuilder stringBuilder=new StringBuilder();
+        for (Profile profile:profiles){
+            stringBuilder.append(profile.getProfileName()+","+profile.getProfileBio()+"\n");
+        }
+        tvProfile.setText(stringBuilder.toString().trim());
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
