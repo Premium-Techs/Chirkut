@@ -12,10 +12,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "chirkut.db";
     public static final String PROFILE_TABLE_NAME = "profile";
+    public static final String PROFILE_COLUMN_ID = "profileId";
     public static final String PROFILE_COLUMN_NAME = "profileName";
     public static final String PROFILE_COLUMN_BIO ="profileBio";
-    public static final String PROFILE_CREATE_TABLE = "create table " +PROFILE_TABLE_NAME+
-      "("+PROFILE_COLUMN_NAME+"text,"+PROFILE_COLUMN_BIO+"text)";
+    public static final String PROFILE_CREATE_TABLE = "create table IF NOT EXISTS "
+            +PROFILE_TABLE_NAME+
+      "("+PROFILE_COLUMN_ID +" integer primary key autoincrement, "+PROFILE_COLUMN_NAME+"text,"+PROFILE_COLUMN_BIO+"text)";
 
     public DatabaseHelper(Context context) {
         super(context,DATABASE_NAME, null,1);
