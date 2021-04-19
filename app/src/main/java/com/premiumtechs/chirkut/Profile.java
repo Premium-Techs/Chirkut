@@ -1,9 +1,5 @@
 package com.premiumtechs.chirkut;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Bundle;
-
 public class Profile {
     private String profileId;
     private String profileName;
