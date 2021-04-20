@@ -20,7 +20,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String PROFILE_CREATE_TABLE = "create table IF NOT EXISTS "
             + PROFILE_TABLE_NAME
             + "(" + PROFILE_COLUMN_ID + " integer primary key autoincrement, "
-            + PROFILE_COLUMN_NAME + "text," + PROFILE_COLUMN_BIO + "text)";
+            + PROFILE_COLUMN_NAME + " text,"
+            + PROFILE_COLUMN_BIO + " text)";
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, 1);
@@ -57,6 +58,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             String profileBio = cursor.getString(cursor.getColumnIndex(PROFILE_COLUMN_BIO));
             profiles.add(new Profile(profileId, profileName, profileBio));
         }
+        cursor.close();
         return profiles;
     }
 }
