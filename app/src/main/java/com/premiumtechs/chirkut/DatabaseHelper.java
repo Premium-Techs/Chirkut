@@ -16,12 +16,30 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String PROFILE_TABLE_NAME = "profile";
     public static final String PROFILE_COLUMN_ID = "profileId";
     public static final String PROFILE_COLUMN_NAME = "profileName";
+    public static final String PROFILE_COLUMN_PHONENO = "profilePhoneNo";
     public static final String PROFILE_COLUMN_BIO = "profileBio";
     public static final String PROFILE_CREATE_TABLE = "create table IF NOT EXISTS "
             + PROFILE_TABLE_NAME
             + "(" + PROFILE_COLUMN_ID + " integer primary key autoincrement, "
+            + PROFILE_COLUMN_PHONENO + " text,"
             + PROFILE_COLUMN_NAME + " text,"
             + PROFILE_COLUMN_BIO + " text)";
+
+    public static final String MESSAGE_TABLE_NAME = "message";
+    public static final String MESSAGE_COLUMN_ID = "messageId";
+    public static final String MESSAGE_COLUMN_MESSAGES = "messages";
+    public static final String MESSAGE_COLUMN_DATETIME = "messageDateTime";
+    public static final String MESSAGE_COLUMN_MEDIA = "media";
+    public static final String MESSAGE_COLUMN_LINKS = "links";
+    public static final String MESSAGE_COLUMN_DOCS = "docs";
+    public static final String MESSAGE_CREATE_TABLE = "create table IF NOT EXISTS "
+            + MESSAGE_TABLE_NAME
+            + "(" + MESSAGE_COLUMN_ID + " integer primary key autoincrement, "
+            + MESSAGE_COLUMN_MESSAGES + " text,"
+            + MESSAGE_COLUMN_DATETIME + " text,"
+            + MESSAGE_COLUMN_MEDIA + " text,"
+            + MESSAGE_COLUMN_LINKS + " text,"
+            + MESSAGE_COLUMN_DOCS + " text)";
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, 1);
@@ -30,7 +48,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqliteDatabase) {
         sqliteDatabase.execSQL(PROFILE_CREATE_TABLE);
+        sqliteDatabase.execSQL(MESSAGE_CREATE_TABLE);
     }
+
+
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -45,6 +66,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ContentValues contentValues = new ContentValues();
         contentValues.put(PROFILE_COLUMN_NAME, profile.getProfileName());
         contentValues.put(PROFILE_COLUMN_BIO, profile.getProfileBio());
+        contentValues.put(PROFILE_COLUMN_PHONENO, profile.getProfilePhoneNo());
         db.insert(PROFILE_TABLE_NAME, null, contentValues);
     }
 
@@ -56,7 +78,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             String profileId = cursor.getString(cursor.getColumnIndex(PROFILE_COLUMN_ID));
             String profileName = cursor.getString(cursor.getColumnIndex(PROFILE_COLUMN_NAME));
             String profileBio = cursor.getString(cursor.getColumnIndex(PROFILE_COLUMN_BIO));
-            profiles.add(new Profile(profileId, profileName, profileBio));
+            String profilePhoneNo = cursor.getString(cursor.getColumnIndex(PROFILE_COLUMN_PHONENO));
+            profiles.add(new Profile(profileId, profileName, profileBio,profilePhoneNo));
         }
         cursor.close();
         return profiles;

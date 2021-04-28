@@ -12,6 +12,7 @@ public class MainActivity extends AppCompatActivity {
     private String profileId;
     private EditText profileName;
     private EditText profileBio;
+    private EditText profilePhoneNo;
     private DatabaseHelper databaseHelper;
     private Button btnSub;
 
@@ -23,12 +24,13 @@ public class MainActivity extends AppCompatActivity {
         profileId = String.valueOf(System.currentTimeMillis());
         profileName = (EditText) findViewById(R.id.etName);
         profileBio = (EditText) findViewById(R.id.etBio);
+        profilePhoneNo = (EditText) findViewById(R.id.etPhoneNo);
         btnSub = (Button) findViewById((R.id.btnSub));
 
         btnSub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Profile profile = new Profile(profileId, profileName.getText().toString(), profileBio.getText().toString());
+                Profile profile = new Profile(profileId, profileName.getText().toString(), profileBio.getText().toString(), profilePhoneNo.getText().toString());
                 databaseHelper.insertProfile(profile);
                 Intent switchActivityIntent = new Intent(MainActivity.this, UpdateProfile.class);
                 startActivity(switchActivityIntent);
