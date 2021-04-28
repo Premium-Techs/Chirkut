@@ -13,25 +13,25 @@
         android:layout_height="wrap_content"
         android:text="Name :"
         android:textColor="@color/black"
-        android:textSize="30sp" />
+        android:textSize="25sp" />
 
     <EditText
         android:id="@+id/etName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:autofillHints="Enter you name"
+        android:autofillHints="Enter your name"
         android:singleLine="true"
         android:textColor="@color/black"
-        android:textSize="25sp" />
+        android:textSize="22sp" />
 
     <EditText
         android:id="@+id/etPhoneNo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:autofillHints="Enter you name"
+        android:autofillHints="Enter Mobile Number"
         android:singleLine="true"
         android:textColor="@color/black"
-        android:textSize="25sp" />
+        android:textSize="22sp" />
 
 
     <TextView
@@ -40,15 +40,15 @@
         android:singleLine="false"
         android:text="Bio: "
         android:textColor="@color/black"
-        android:textSize="30sp" />
+        android:textSize="25sp" />
 
     <EditText
         android:id="@+id/etBio"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:autofillHints="Enter you name"
+        android:autofillHints="Enter your BIO"
         android:textColor="@color/black"
-        android:textSize="25sp" />
+        android:textSize="22sp" />
 
     <Button
         android:id="@+id/btnSub"
