@@ -17,12 +17,12 @@ public class UpdateProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_update_profile);
 
-        databaseHelper = new DatabaseHelper(this.getApplicationContext());
+        databaseHelper = new DatabaseHelper(this);
         List<Profile> profiles = databaseHelper.getAllProfile();
         TextView tvProfile = (TextView) findViewById(R.id.tvProfile);
         StringBuilder stringBuilder = new StringBuilder();
         for (Profile profile : profiles) {
-            stringBuilder.append(profile.getProfileName() + "," + profile.getProfileBio() + "\n");
+            stringBuilder.append( profile.getProfileId()+","  + profile.getProfileName() + "," + profile.getProfileBio() + "," + profile.getProfilePhoneNo() + "\n");
         }
         tvProfile.setText(stringBuilder.toString().trim());
     }

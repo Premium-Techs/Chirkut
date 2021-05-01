@@ -5,12 +5,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".UpdateProfile"
+    android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <!--<ImageView
+            android:id="@+id/ivDP"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:scaleType="centerCrop"
+            />-->
+        />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/tvProfile"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:layout_editor_absoluteX="179dp"
-        tools:layout_editor_absoluteY="339dp" />
+        tools:layout_editor_absoluteY="339dp"
+        android:text="tT"/>
 </LinearLayout>

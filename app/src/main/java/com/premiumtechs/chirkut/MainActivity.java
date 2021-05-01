@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        databaseHelper = new DatabaseHelper(this.getApplicationContext());
+        databaseHelper = new DatabaseHelper(this);
         profileId = String.valueOf(System.currentTimeMillis());
         profileName = (EditText) findViewById(R.id.etName);
         profileBio = (EditText) findViewById(R.id.etBio);
