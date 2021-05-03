@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UpdateProfile"
+    tools:context=".EditProfile"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
@@ -25,17 +25,7 @@
             app:shapeAppearanceOverlay="@style/roundedImageView"/>
         />
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/tvProfile"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        tools:layout_editor_absoluteX="179dp"
-        tools:layout_editor_absoluteY="339dp"
-        />
-   <!-- <EditText
+    <EditText
         android:id="@+id/etName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -64,23 +54,13 @@
         android:layout_marginLeft="10dp"
         tools:layout_editor_absoluteX="179dp"
         tools:layout_editor_absoluteY="339dp"
-        />-->
+        />
     <Button
-        android:id="@+id/btnEdit"
+        android:id="@+id/btnUpdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Edit Profile"
-        android:textColor="@color/white"
-        android:textSize="25sp"
-        android:backgroundTint="@color/teal_700"/>
-
-    <Button
-        android:id="@+id/btnDelete"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Delete Profile"
+        android:text="Update Profile"
         android:textColor="@color/white"
         android:textSize="25sp"
         android:backgroundTint="@color/teal_700"/>

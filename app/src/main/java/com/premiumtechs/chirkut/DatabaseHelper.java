@@ -75,9 +75,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ContentValues contentValues = new ContentValues();
         contentValues.put(PROFILE_COLUMN_ID,profile.getProfileId());
         contentValues.put(PROFILE_COLUMN_NAME, profile.getProfileName());
-        contentValues.put(PROFILE_COLUMN_BIO, profile.getProfileBio());
         contentValues.put(PROFILE_COLUMN_PHONENO, profile.getProfilePhoneNo());
+        contentValues.put(PROFILE_COLUMN_BIO, profile.getProfileBio());
         db.insert(PROFILE_TABLE_NAME, null, contentValues);
+    }
+    public int deleteProfile(Profile profile) {
+        SQLiteDatabase db = this.getWritableDatabase();
+       return db.delete(PROFILE_TABLE_NAME,"profileId = ?", new String[]{profile.getProfileId()});
+    }
+    public int updateProfile(Profile profile) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(PROFILE_COLUMN_ID,profile.getProfileId());
+        contentValues.put(PROFILE_COLUMN_NAME, profile.getProfileName());
+        contentValues.put(PROFILE_COLUMN_PHONENO, profile.getProfilePhoneNo());
+        contentValues.put(PROFILE_COLUMN_BIO, profile.getProfileBio());
+       return db.update(PROFILE_TABLE_NAME,contentValues,"profileId = ?", new String[]{profile.getProfileId()});
     }
 
     public List<Profile> getAllProfile() {
@@ -87,9 +100,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         while (cursor.moveToNext()) {
             String profileId = cursor.getString(cursor.getColumnIndex(PROFILE_COLUMN_ID));
             String profileName = cursor.getString(cursor.getColumnIndex(PROFILE_COLUMN_NAME));
-            String profileBio = cursor.getString(cursor.getColumnIndex(PROFILE_COLUMN_BIO));
             String profilePhoneNo = cursor.getString(cursor.getColumnIndex(PROFILE_COLUMN_PHONENO));
-            profiles.add(new Profile(profileId, profileName, profileBio,profilePhoneNo));
+            String profileBio = cursor.getString(cursor.getColumnIndex(PROFILE_COLUMN_BIO));
+            profiles.add(new Profile(profileId, profileName, profilePhoneNo, profileBio));
         }
         cursor.close();
         return profiles;

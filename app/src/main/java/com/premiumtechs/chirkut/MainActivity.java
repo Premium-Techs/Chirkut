@@ -25,12 +25,12 @@ public class MainActivity extends AppCompatActivity {
         profileName = (EditText) findViewById(R.id.etName);
         profileBio = (EditText) findViewById(R.id.etBio);
         profilePhoneNo = (EditText) findViewById(R.id.etPhoneNo);
-        btnSub = (Button) findViewById((R.id.btnSub));
+        btnSub = (Button) findViewById(R.id.btnSub);
 
         btnSub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Profile profile = new Profile(profileId, profileName.getText().toString(), profileBio.getText().toString(), profilePhoneNo.getText().toString());
+                Profile profile = new Profile(profileId, profileName.getText().toString(), profilePhoneNo.getText().toString(), profileBio.getText().toString());
                 databaseHelper.insertProfile(profile);
                 Intent switchActivityIntent = new Intent(MainActivity.this, UpdateProfile.class);
                 startActivity(switchActivityIntent);

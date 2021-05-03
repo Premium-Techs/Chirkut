@@ -40,4 +40,5 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     //Dependency for Material Components (Mimma)
     implementation 'com.google.android.material:material:1.2.1'
+    /*implementation 'com.cuboid:cuboidcirclebutton:1.0.3'*/
 }
