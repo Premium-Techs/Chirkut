@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UpdateProfile"
     android:orientation="vertical"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".UpdateProfile">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -18,71 +18,70 @@
             android:scaleType="centerCrop"
             />-->
         <com.google.android.material.imageview.ShapeableImageView
-            android:layout_height="150dp"
             android:layout_width="150dp"
+            android:layout_height="150dp"
             android:layout_marginTop="10dp"
-            android:src="@drawable/harry_potter"
-            app:shapeAppearanceOverlay="@style/roundedImageView"/>
-        />
+            android:src="@drawable/ic_launcher_foreground"
+            app:shapeAppearanceOverlay="@style/roundedImageView" />
+
     </LinearLayout>
 
     <TextView
         android:id="@+id/tvProfile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
-        tools:layout_editor_absoluteX="179dp"
-        tools:layout_editor_absoluteY="339dp"
-        />
-   <!-- <EditText
-        android:id="@+id/etName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:hint="Username"
         tools:layout_editor_absoluteX="179dp"
-        tools:layout_editor_absoluteY="339dp"
-        />
-    <EditText
-        android:id="@+id/etPhoneNo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:hint="Phone Number"
-        android:layout_marginLeft="10dp"
-        tools:layout_editor_absoluteX="179dp"
-        tools:layout_editor_absoluteY="339dp"
-        />
-    <EditText
-        android:id="@+id/etBio"
-        android:hint="Bio"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        tools:layout_editor_absoluteX="179dp"
-        tools:layout_editor_absoluteY="339dp"
-        />-->
+        tools:layout_editor_absoluteY="339dp" />
+    <!-- <EditText
+         android:id="@+id/etName"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_marginTop="10dp"
+         android:layout_marginLeft="10dp"
+         android:hint="Username"
+         tools:layout_editor_absoluteX="179dp"
+         tools:layout_editor_absoluteY="339dp"
+         />
+     <EditText
+         android:id="@+id/etPhoneNo"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_marginTop="10dp"
+         android:hint="Phone Number"
+         android:layout_marginLeft="10dp"
+         tools:layout_editor_absoluteX="179dp"
+         tools:layout_editor_absoluteY="339dp"
+         />
+     <EditText
+         android:id="@+id/etBio"
+         android:hint="Bio"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_marginTop="10dp"
+         android:layout_marginLeft="10dp"
+         tools:layout_editor_absoluteX="179dp"
+         tools:layout_editor_absoluteY="339dp"
+         />-->
     <Button
         android:id="@+id/btnEdit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:backgroundTint="@color/teal_700"
         android:text="Edit Profile"
         android:textColor="@color/white"
-        android:textSize="25sp"
-        android:backgroundTint="@color/teal_700"/>
+        android:textSize="25sp" />
 
     <Button
         android:id="@+id/btnDelete"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:backgroundTint="@color/teal_700"
         android:text="Delete Profile"
         android:textColor="@color/white"
-        android:textSize="25sp"
-        android:backgroundTint="@color/teal_700"/>
+        android:textSize="25sp" />
 
 </LinearLayout>

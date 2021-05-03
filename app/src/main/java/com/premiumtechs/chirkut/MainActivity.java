@@ -22,10 +22,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         databaseHelper = new DatabaseHelper(this);
         profileId = String.valueOf(System.currentTimeMillis());
-        profileName = (EditText) findViewById(R.id.etName);
-        profileBio = (EditText) findViewById(R.id.etBio);
-        profilePhoneNo = (EditText) findViewById(R.id.etPhoneNo);
-        btnSub = (Button) findViewById(R.id.btnSub);
+        profileName = findViewById(R.id.etName);
+        profileBio = findViewById(R.id.etBio);
+        profilePhoneNo = findViewById(R.id.etPhoneNo);
+        btnSub = findViewById(R.id.btnSub);
 
         btnSub.setOnClickListener(new View.OnClickListener() {
             @Override

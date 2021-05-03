@@ -17,28 +17,28 @@ public class Profile {
         this.profilePhoneNo = profilePhoneNo;
     }
 
-    public void setProfileId(String profileId) {
-        this.profileId = profileId;
-    }
-
     public String getProfileId() {
         return profileId;
     }
 
-    public void setProfileName(String profileName) {
-        this.profileName = profileName;
+    public void setProfileId(String profileId) {
+        this.profileId = profileId;
     }
 
     public String getProfileName() {
         return profileName;
     }
 
-    public void setProfileBio(String profileBio) {
-        this.profileBio = profileBio;
+    public void setProfileName(String profileName) {
+        this.profileName = profileName;
     }
 
     public String getProfileBio() {
         return profileBio;
+    }
+
+    public void setProfileBio(String profileBio) {
+        this.profileBio = profileBio;
     }
 
     public String getProfilePhoneNo() {

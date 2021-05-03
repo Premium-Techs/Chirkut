@@ -5,15 +5,11 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
-
     public static final String DATABASE_NAME = "chirkut.db";
     public static final String PROFILE_TABLE_NAME = "profile";
     public static final String PROFILE_COLUMN_ID = "profileId";
@@ -26,7 +22,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + PROFILE_COLUMN_PHONENO + " text,"
             + PROFILE_COLUMN_NAME + " text,"
             + PROFILE_COLUMN_BIO + " text)";
-
     public static final String MESSAGE_TABLE_NAME = "message";
     public static final String MESSAGE_COLUMN_ID = "messageId";
     public static final String MESSAGE_COLUMN_MESSAGES = "messages";
@@ -48,7 +43,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + MESSAGE_COLUMN_MEDIA + " text,"
             + MESSAGE_COLUMN_LINKS + " text,"
             + MESSAGE_COLUMN_DOCS + " text,"
-            + " FOREIGN KEY ("+MESSAGE_COLUMN_SENDERID+") REFERENCES "+PROFILE_TABLE_NAME+" ("+PROFILE_COLUMN_ID+"))";
+            + " FOREIGN KEY (" + MESSAGE_COLUMN_SENDERID + ") REFERENCES " + PROFILE_TABLE_NAME + " (" + PROFILE_COLUMN_ID + "))";
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, 1);
@@ -59,8 +54,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         sqliteDatabase.execSQL(PROFILE_CREATE_TABLE);
         sqliteDatabase.execSQL(MESSAGE_CREATE_TABLE);
     }
-
-
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -73,24 +66,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void insertProfile(Profile profile) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(PROFILE_COLUMN_ID,profile.getProfileId());
+        contentValues.put(PROFILE_COLUMN_ID, profile.getProfileId());
         contentValues.put(PROFILE_COLUMN_NAME, profile.getProfileName());
         contentValues.put(PROFILE_COLUMN_PHONENO, profile.getProfilePhoneNo());
         contentValues.put(PROFILE_COLUMN_BIO, profile.getProfileBio());
         db.insert(PROFILE_TABLE_NAME, null, contentValues);
     }
+
     public int deleteProfile(Profile profile) {
         SQLiteDatabase db = this.getWritableDatabase();
-       return db.delete(PROFILE_TABLE_NAME,"profileId = ?", new String[]{profile.getProfileId()});
+        return db.delete(PROFILE_TABLE_NAME, "profileId = ?", new String[]{profile.getProfileId()});
     }
+
     public int updateProfile(Profile profile) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(PROFILE_COLUMN_ID,profile.getProfileId());
+        contentValues.put(PROFILE_COLUMN_ID, profile.getProfileId());
         contentValues.put(PROFILE_COLUMN_NAME, profile.getProfileName());
         contentValues.put(PROFILE_COLUMN_PHONENO, profile.getProfilePhoneNo());
         contentValues.put(PROFILE_COLUMN_BIO, profile.getProfileBio());
-       return db.update(PROFILE_TABLE_NAME,contentValues,"profileId = ?", new String[]{profile.getProfileId()});
+        return db.update(PROFILE_TABLE_NAME, contentValues, "profileId = ?", new String[]{profile.getProfileId()});
     }
 
     public List<Profile> getAllProfile() {

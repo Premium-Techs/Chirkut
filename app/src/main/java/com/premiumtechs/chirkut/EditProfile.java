@@ -1,14 +1,13 @@
 package com.premiumtechs.chirkut;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.List;
 
@@ -33,9 +32,9 @@ public class EditProfile extends AppCompatActivity {
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(profiles != null && profiles.get(0) != null){
+                if (profiles != null && profiles.get(0) != null) {
                     Profile profile = profiles.get(0);
-                    Profile newProfile =  new Profile(
+                    Profile newProfile = new Profile(
                             profile.getProfileId(),
                             profileName.getText().toString(),
                             profilePhoneNo.getText().toString(),
@@ -45,26 +44,27 @@ public class EditProfile extends AppCompatActivity {
                     int check = databaseHelper.updateProfile(newProfile);
                     Toast.makeText(EditProfile.this, "Successfully Updated", Toast.LENGTH_SHORT).show();
                 }
-                 Intent switchActivityIntent = new Intent(EditProfile.this, UpdateProfile.class);
-                 startActivity(switchActivityIntent);
+                Intent switchActivityIntent = new Intent(EditProfile.this, UpdateProfile.class);
+                startActivity(switchActivityIntent);
             }
         });
     }
-    private void setProfileData(List<Profile> profiles) {
 
-        if(profiles != null && profiles.get(0) != null){
+    private void setProfileData(List<Profile> profiles) {
+        if (profiles != null && profiles.get(0) != null) {
             Profile profile = profiles.get(0);
             profileName.setText(profile.getProfileName());
             profilePhoneNo.setText(profile.getProfilePhoneNo());
             profileBio.setText(profile.getProfileBio());
         }
-
     }
+
     private void initUi() {
         profileName = findViewById(R.id.etName);
         profilePhoneNo = findViewById(R.id.etPhoneNo);
         profileBio = findViewById(R.id.etBio);
-        btnUpdate=(Button) findViewById(R.id.btnUpdate) ;
+        btnUpdate = findViewById(R.id.btnUpdate);
         //btnDelete = findViewById(R.id.btnDelete);
     }
+
 }
