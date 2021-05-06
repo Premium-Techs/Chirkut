@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_chirkut_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Chirkut">
-        <activity android:name=".EditProfile"></activity>
+        <activity android:name=".ChatPage"></activity>
+        <activity android:name=".EditProfile" />
         <activity
             android:name=".Splash"
             android:noHistory="true"

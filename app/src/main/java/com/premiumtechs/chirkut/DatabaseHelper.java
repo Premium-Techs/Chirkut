@@ -102,4 +102,39 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
         return profiles;
     }
+    /*Message_Table*/
+    public void insertMessage(Message message) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(MESSAGE_COLUMN_ID, message.getMessageId());
+        contentValues.put(MESSAGE_COLUMN_MESSAGES, message.getMessages());
+        contentValues.put(MESSAGE_COLUMN_SENDERID, message.getSenderId());
+        contentValues.put(MESSAGE_COLUMN_RECIEVERID, message.getMessageId());
+        contentValues.put(MESSAGE_COLUMN_SENDTIME, message.getSendTime());
+        contentValues.put(MESSAGE_COLUMN_RECIEVETIME, message.getRecieveTime());
+        contentValues.put(MESSAGE_COLUMN_MEDIA, message.getMedia());
+        contentValues.put(MESSAGE_COLUMN_LINKS, message.getLinks());
+        contentValues.put(MESSAGE_COLUMN_DOCS, message.getDocs());
+        db.insert(MESSAGE_TABLE_NAME, null, contentValues);
+    }
+
+    public List<Message> getAllMessage() {
+        List<Message> messageList = new ArrayList<>();
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.query(MESSAGE_TABLE_NAME, null, null, null, null, null, null);
+        while (cursor.moveToNext()) {
+            String messageId = cursor.getString(cursor.getColumnIndex(MESSAGE_COLUMN_ID));
+            String sendId = cursor.getString(cursor.getColumnIndex(MESSAGE_COLUMN_SENDERID));
+            String recieveId = cursor.getString(cursor.getColumnIndex(MESSAGE_COLUMN_RECIEVERID));
+            String messages = cursor.getString(cursor.getColumnIndex(MESSAGE_COLUMN_MESSAGES));
+            String sendTime = cursor.getString(cursor.getColumnIndex(MESSAGE_COLUMN_SENDTIME));
+            String recieveTime = cursor.getString(cursor.getColumnIndex(MESSAGE_COLUMN_RECIEVETIME));
+            //String media = cursor.getString(cursor.getColumnIndex(MESSAGE_COLUMN_MEDIA));
+            //String links = cursor.getString(cursor.getColumnIndex(MESSAGE_COLUMN_LINKS));
+            //String docs = cursor.getString(cursor.getColumnIndex(MESSAGE_COLUMN_DOCS));
+            messageList.add(new Message(messageId,sendId,recieveId,messages,sendTime,recieveTime));
+        }
+        cursor.close();
+        return messageList;
+    }
 }

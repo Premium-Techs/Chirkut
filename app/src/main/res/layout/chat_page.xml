@@ -42,10 +42,11 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="545dp"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <ListView
+                android:id="@+id/lvMessages"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 tools:listitem="@android:layout/activity_list_item">
@@ -55,12 +56,23 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="545dp"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <EditText
-                android:layout_width="383dp"
+                android:id="@+id/etMessage"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/btnSend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20px"
+                android:layout_marginBottom="20px"
+                android:background="@color/teal_700"
+                android:padding="10px"
+                android:text="Send"
+                android:textSize="10dp" />
         </LinearLayout>
 
         <androidx.appcompat.widget.LinearLayoutCompat
@@ -70,9 +82,10 @@
             <EditText
                 android:id="@+id/msg_sent_box"
                 android:layout_width="match_parent"
-                android:layout_height="83dp"
+                android:layout_height="wrap_content"
                 android:textColor="#000"
-                android:textSize="30dp" />
+                android:hint="@string/app_name"
+                android:textSize="15dp" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 

@@ -1,27 +1,24 @@
 package com.premiumtechs.chirkut;
 
 public class Message {
-    private String message;
     private String messageId;
+    private String senderId;
+    private String recieverId;
     private String messages;
-    private String messageDateTime;
+    private String sendTime;
+    private String recieveTime;
     private String media;
     private String links;
     private String docs;
 
-    public Message(String message, String messageId, String messages, String messageDateTime) {
-        this.message = message;
+    public Message(String messageId, String senderId, String recieverId, String messages, String sendTime,String recieveTime) {
+        //this.message = message;
         this.messageId = messageId;
         this.messages = messages;
-        this.messageDateTime = messageDateTime;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
+        this.sendTime = sendTime;
+        this.recieveTime=recieveTime;
+        this.senderId=senderId;
+        this.recieverId=recieverId;
     }
 
     public String getMessageId() {
@@ -40,12 +37,36 @@ public class Message {
         this.messages = messages;
     }
 
-    public String getMessageDateTime() {
-        return messageDateTime;
+    public String getSenderId() {
+        return senderId;
     }
 
-    public void setMessageDateTime(String messageDateTime) {
-        this.messageDateTime = messageDateTime;
+    public void setSenderId(String senderId) {
+        this.senderId = senderId;
+    }
+
+    public String getRecieverId() {
+        return recieverId;
+    }
+
+    public void setRecieverId(String recieverId) {
+        this.recieverId = recieverId;
+    }
+
+    public String getSendTime() {
+        return sendTime;
+    }
+
+    public void setSendTime(String sendTime) {
+        this.sendTime = sendTime;
+    }
+
+    public String getRecieveTime() {
+        return recieveTime;
+    }
+
+    public void setRecieveTime(String recieveTime) {
+        this.recieveTime = recieveTime;
     }
 
     public String getMedia() {
@@ -75,10 +96,12 @@ public class Message {
     @Override
     public String toString() {
         return "Message{" +
-                "message='" + message + '\'' +
                 ", messageId='" + messageId + '\'' +
+                ", senderId='" + senderId + '\'' +
+                ", recieverId='" + recieverId + '\'' +
                 ", messages='" + messages + '\'' +
-                ", messageDateTime='" + messageDateTime + '\'' +
+                ", sendTime='" + sendTime + '\'' +
+                ", recieveTime='" + recieveTime + '\'' +
                 ", media='" + media + '\'' +
                 ", links='" + links + '\'' +
                 ", docs='" + docs + '\'' +

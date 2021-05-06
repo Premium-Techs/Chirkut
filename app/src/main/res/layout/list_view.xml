@@ -21,6 +21,10 @@
         android:id="@+id/listMode"
         android:layout_width="match_parent"
         android:layout_height="595dp"></ListView>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="send text"/>
 
     <Button
         android:id="@+id/button"
@@ -30,7 +34,7 @@
         android:layout_marginBottom="20px"
         android:background="@color/teal_700"
         android:padding="10px"
-        android:text="add Item"
+        android:text="Send"
         android:textSize="20dp" />
 
 </LinearLayout>

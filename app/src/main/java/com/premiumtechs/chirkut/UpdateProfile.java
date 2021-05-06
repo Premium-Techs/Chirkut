@@ -21,7 +21,7 @@ public class UpdateProfile extends AppCompatActivity {
     */
     private TextView tvProfile;
     private Button btnEdit;
-    private Button btnDelete;
+    private Button btnDelete, btnStartChat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +40,13 @@ public class UpdateProfile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent switchActivityIntent = new Intent(UpdateProfile.this, EditProfile.class);
+                startActivity(switchActivityIntent);
+            }
+        });
+        btnStartChat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent switchActivityIntent = new Intent(UpdateProfile.this, ChatPage.class);
                 startActivity(switchActivityIntent);
             }
         });
@@ -73,5 +80,6 @@ public class UpdateProfile extends AppCompatActivity {
         tvProfile = findViewById(R.id.tvProfile);
         btnEdit = findViewById(R.id.btnEdit);
         btnDelete = findViewById(R.id.btnDelete);
+        btnStartChat=findViewById(R.id.btnStartChat);
     }
 }
