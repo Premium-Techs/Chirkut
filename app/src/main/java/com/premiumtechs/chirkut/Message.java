@@ -11,6 +11,10 @@ public class Message {
     private String links;
     private String docs;
 
+    public Message(){
+
+    }
+
     public Message(String messageId, String senderId, String recieverId, String messages, String sendTime, String recieveTime) {
         //this.message = message;
         this.messageId = messageId;
