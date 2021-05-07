@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
+    android:orientation="vertical"
     tools:context=".Splash">
 
     <TextView
@@ -15,5 +16,42 @@
         android:textAllCaps="false"
         android:textColor="@color/teal_700"
         android:textSize="50sp" />
+
+    <Button
+        android:id="@+id/rhthome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="rhtcht" />
+
+    <Button
+        android:id="@+id/rhtcht"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="rhtcht" />
+
+    <Button
+        android:id="@+id/rhtcreate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="rhtcreate" />
+
+    <Button
+        android:id="@+id/rhtedt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="rhtedt" />
+
+    <Button
+        android:id="@+id/rhtsett"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="rhtsett" />
+
+    <Button
+        android:id="@+id/rhtabt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="rhtabt" />
+
 
 </LinearLayout>
