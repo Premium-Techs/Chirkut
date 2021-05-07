@@ -27,7 +27,7 @@ public class CustomAdapter extends ArrayAdapter<Message> {
 
         if (convertView == null) {
             LayoutInflater inflater = LayoutInflater.from(getContext());
-            convertView = inflater.inflate(R.layout.profile_box, parent, false);
+            convertView = inflater.inflate(R.layout.msg_box, parent, false);
             viewHolder.msgBody = convertView.findViewById(R.id.msgBody);
             viewHolder.msgTime = convertView.findViewById(R.id.msgTime);
             convertView.setTag(viewHolder);
