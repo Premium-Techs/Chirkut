@@ -14,6 +14,10 @@ import java.util.List;
 
 public class ChatPage extends AppCompatActivity {
     private String messageId;
+    private String senderId;
+    private String recieveId;
+    private String sendTime;
+    private String recieveTime;
     private EditText etMessage;
     private ListView lvMessages;
     private EditText profilePhoneNo;
@@ -35,16 +39,16 @@ public class ChatPage extends AppCompatActivity {
         }
         databaseHelper = new DatabaseHelper(this);
         //todo search message for profileID
-        List<Message> messageList = databaseHelper.getAllMessage();
+        List<Message> messageList = databaseHelper.getAllMessage( senderId, recieveId, sendTime, recieveTime );
         lvMessages.setAdapter(new CustomAdapter(messageList, this.getApplicationContext()));
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //todo send message
-                //Profile profile = new Profile(profileId, profileName.getText().toString(), profilePhoneNo.getText().toString(), profileBio.getText().toString());
-                //databaseHelper.insertMessage(message);
-                //Intent switchActivityIntent = new Intent(MainActivity.this, UpdateProfile.class);
-                //startActivity(switchActivityIntent);
+                Message message = new Message();
+                databaseHelper.insertMessage(message);
+                Intent switchActivityIntent = new Intent(ChatPage.this, ChatPage.class);
+                startActivity(switchActivityIntent);
             }
         });
 
