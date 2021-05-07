@@ -1,96 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".UpdateProfile">
+    android:padding="5dp"
+    android:scrollbars="vertical">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <!--<ImageView
-            android:id="@+id/ivDP"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:scrollbars="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context=".UpdateProfile">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <!--<ImageView
+                android:id="@+id/ivDP"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:scaleType="centerCrop"
+                />-->
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="10dp"
+                android:src="@mipmap/ic_dp_round"
+                app:shapeAppearanceOverlay="@style/roundedImageView" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvProfile"
             android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:scaleType="centerCrop"
-            />-->
-        <com.google.android.material.imageview.ShapeableImageView
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
-            android:src="@mipmap/ic_dp_round"
-            app:shapeAppearanceOverlay="@style/roundedImageView" />
+            tools:layout_editor_absoluteX="179dp"
+            tools:layout_editor_absoluteY="339dp" />
+        <!-- <EditText
+             android:id="@+id/etName"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="10dp"
+             android:layout_marginLeft="10dp"
+             android:hint="Username"
+             tools:layout_editor_absoluteX="179dp"
+             tools:layout_editor_absoluteY="339dp"
+             />
+         <EditText
+             android:id="@+id/etPhoneNo"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="10dp"
+             android:hint="Phone Number"
+             android:layout_marginLeft="10dp"
+             tools:layout_editor_absoluteX="179dp"
+             tools:layout_editor_absoluteY="339dp"
+             />
+         <EditText
+             android:id="@+id/etBio"
+             android:hint="Bio"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="10dp"
+             android:layout_marginLeft="10dp"
+             tools:layout_editor_absoluteX="179dp"
+             tools:layout_editor_absoluteY="339dp"
+             />-->
+        <Button
+            android:id="@+id/btnEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="@color/teal_700"
+            android:text="Edit Profile"
+            android:textColor="@color/white"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/btnDelete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="@color/teal_700"
+            android:text="Delete Profile"
+            android:textColor="@color/white"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/btnStartChat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="@color/teal_700"
+            android:text="Start Chat"
+            android:textColor="@color/white"
+            android:textSize="25sp" />
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/tvProfile"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        tools:layout_editor_absoluteX="179dp"
-        tools:layout_editor_absoluteY="339dp" />
-    <!-- <EditText
-         android:id="@+id/etName"
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-         android:layout_marginTop="10dp"
-         android:layout_marginLeft="10dp"
-         android:hint="Username"
-         tools:layout_editor_absoluteX="179dp"
-         tools:layout_editor_absoluteY="339dp"
-         />
-     <EditText
-         android:id="@+id/etPhoneNo"
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-         android:layout_marginTop="10dp"
-         android:hint="Phone Number"
-         android:layout_marginLeft="10dp"
-         tools:layout_editor_absoluteX="179dp"
-         tools:layout_editor_absoluteY="339dp"
-         />
-     <EditText
-         android:id="@+id/etBio"
-         android:hint="Bio"
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-         android:layout_marginTop="10dp"
-         android:layout_marginLeft="10dp"
-         tools:layout_editor_absoluteX="179dp"
-         tools:layout_editor_absoluteY="339dp"
-         />-->
-    <Button
-        android:id="@+id/btnEdit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:backgroundTint="@color/teal_700"
-        android:text="Edit Profile"
-        android:textColor="@color/white"
-        android:textSize="25sp" />
-
-    <Button
-        android:id="@+id/btnDelete"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:backgroundTint="@color/teal_700"
-        android:text="Delete Profile"
-        android:textColor="@color/white"
-        android:textSize="25sp" />
-    <Button
-        android:id="@+id/btnStartChat"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:backgroundTint="@color/teal_700"
-        android:text="Start Chat"
-        android:textColor="@color/white"
-        android:textSize="25sp" />
-
-</LinearLayout>
+</ScrollView>

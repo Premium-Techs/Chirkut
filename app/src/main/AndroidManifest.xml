@@ -9,8 +9,12 @@
         android:roundIcon="@mipmap/ic_chirkut_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Chirkut">
-        <activity android:name=".ChatPage"></activity>
-        <activity android:name=".EditProfile" />
+        <activity android:name=".Home"></activity>
+        <activity android:name=".About" />
+        <activity android:name=".ChatPage" />
+        <activity
+            android:name=".EditProfile"
+            android:noHistory="true"></activity>
         <activity
             android:name=".Splash"
             android:noHistory="true"
@@ -22,12 +26,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Settings" />
         <activity
             android:name=".UpdateProfile"
             android:label="@string/title_activity_update_profile"
             android:theme="@style/Theme.Chirkut.NoActionBar" />
-        <activity android:name=".MainActivity" />
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/Theme.Chirkut.NoActionBar" />
     </application>
 
 </manifest>

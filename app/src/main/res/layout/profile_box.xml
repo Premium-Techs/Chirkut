@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
+    android:layout_marginHorizontal="5dp"
+    android:layout_marginVertical="2dp"
+    android:background="@drawable/border_msg_others"
     android:orientation="vertical"
-    android:padding="10dp"
-    tools:context=".UpdateProfile">
+    android:padding="2dp">
 
     <TextView
-        android:id="@+id/tvProfilee"
+        android:id="@+id/profileHome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Name :"
-        android:textColor="@color/black"
-        android:textSize="30sp" />
+        android:textSize="14sp" />
 
 </LinearLayout>

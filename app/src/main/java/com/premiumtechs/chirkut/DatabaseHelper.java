@@ -102,6 +102,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
         return profiles;
     }
+
     /*Message_Table*/
     public void insertMessage(Message message) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -132,7 +133,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             //String media = cursor.getString(cursor.getColumnIndex(MESSAGE_COLUMN_MEDIA));
             //String links = cursor.getString(cursor.getColumnIndex(MESSAGE_COLUMN_LINKS));
             //String docs = cursor.getString(cursor.getColumnIndex(MESSAGE_COLUMN_DOCS));
-            messageList.add(new Message(messageId,sendId,recieveId,messages,sendTime,recieveTime));
+            messageList.add(new Message(messageId, sendId, recieveId, messages, sendTime, recieveTime));
         }
         cursor.close();
         return messageList;

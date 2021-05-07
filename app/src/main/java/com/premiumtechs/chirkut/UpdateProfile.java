@@ -80,6 +80,6 @@ public class UpdateProfile extends AppCompatActivity {
         tvProfile = findViewById(R.id.tvProfile);
         btnEdit = findViewById(R.id.btnEdit);
         btnDelete = findViewById(R.id.btnDelete);
-        btnStartChat=findViewById(R.id.btnStartChat);
+        btnStartChat = findViewById(R.id.btnStartChat);
     }
 }

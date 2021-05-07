@@ -60,9 +60,9 @@ public class EditProfile extends AppCompatActivity {
     }
 
     private void initUi() {
-        profileName = findViewById(R.id.etName);
-        profilePhoneNo = findViewById(R.id.etPhoneNo);
-        profileBio = findViewById(R.id.etBio);
+        profileName = findViewById(R.id.edtName);
+        profilePhoneNo = findViewById(R.id.edtPhoneNo);
+        profileBio = findViewById(R.id.edtBio);
         btnUpdate = findViewById(R.id.btnUpdate);
         //btnDelete = findViewById(R.id.btnDelete);
     }

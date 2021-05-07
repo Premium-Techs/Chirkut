@@ -11,14 +11,14 @@ public class Message {
     private String links;
     private String docs;
 
-    public Message(String messageId, String senderId, String recieverId, String messages, String sendTime,String recieveTime) {
+    public Message(String messageId, String senderId, String recieverId, String messages, String sendTime, String recieveTime) {
         //this.message = message;
         this.messageId = messageId;
         this.messages = messages;
         this.sendTime = sendTime;
-        this.recieveTime=recieveTime;
-        this.senderId=senderId;
-        this.recieverId=recieverId;
+        this.recieveTime = recieveTime;
+        this.senderId = senderId;
+        this.recieverId = recieverId;
     }
 
     public String getMessageId() {

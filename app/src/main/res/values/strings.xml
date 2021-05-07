@@ -5,4 +5,24 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
     <string name="splash_welcome_new">Chirkut</string>
+    <string name="about_app">
+        An Instant Messaging app to communicate over short distance using Wi-Fi Direct.\n
+        \nThe app lets the users communicate over a short distance using Wi-Fi Direct.\n
+        \nUsers are able to\n
+        (a) create profile,\n
+        (b) update profile,\n
+        (c) send messages,\n
+        (d) receive messages,\n
+        (e) delete stored messages.\n
+        \nAll data are stored in the smartphone using SQLite database.\n
+    </string>
+    <string name="about_contrib">
+        This project was done by team \'Premium Techs\' as part of the Android project.\n
+        \nThe team consisted of five students of PGDIT 20th batch, Institute of Inormation Technology, University of Dhaka.\n
+        2005: Mimma Akter\n
+        2008: Md. Nazmus Sakib\n
+        2027: Kazi Naima Sultana\n
+        2039: Ahmed Ullah\n
+        2003: Md. Ashraful Haq Rahat\n
+    </string>
 </resources>

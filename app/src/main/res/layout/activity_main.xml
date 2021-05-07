@@ -1,80 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical"
-    android:padding="10dp"
-    tools:context=".MainActivity">
+    android:padding="5dp"
+    android:scrollbars="vertical">
 
-    <TextView
-        android:id="@+id/textView"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
-        android:fontFamily="cursive"
-        android:text="Chirkut"
-        android:textAlignment="center"
-        android:textColor="@color/teal_700"
-        android:textSize="70dp" />
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="10dp"
+        tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Name :"
-        android:textColor="@color/black"
-        android:textSize="25sp" />
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:fontFamily="cursive"
+            android:text="Chirkut"
+            android:textAlignment="center"
+            android:textColor="@color/teal_700"
+            android:textSize="70dp" />
 
-    <EditText
-        android:id="@+id/etName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:autofillHints="Enter your name"
-        android:singleLine="true"
-        android:textColor="@color/black"
-        android:textSize="22sp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Name :"
+            android:textColor="@color/black"
+            android:textSize="25sp" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Phone No :"
-        android:textColor="@color/black"
-        android:textSize="25sp" />
+        <EditText
+            android:id="@+id/etName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="username"
+            android:hint="Enter your name"
+            android:inputType="textPersonName"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textSize="22sp" />
 
-    <EditText
-        android:id="@+id/etPhoneNo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:autofillHints="Enter Mobile Number"
-        android:singleLine="true"
-        android:textColor="@color/black"
-        android:textSize="22sp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Phone No :"
+            android:textColor="@color/black"
+            android:textSize="25sp" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:singleLine="false"
-        android:text="Bio: "
-        android:textColor="@color/black"
-        android:textSize="25sp" />
+        <EditText
+            android:id="@+id/etPhoneNo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="mobile no"
+            android:hint="Enter Mobile Number"
+            android:inputType="phone"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textSize="22sp" />
 
-    <EditText
-        android:id="@+id/etBio"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:autofillHints="Enter your BIO"
-        android:textColor="@color/black"
-        android:textSize="22sp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bio: "
+            android:textColor="@color/black"
+            android:textSize="25sp" />
 
-    <Button
-        android:id="@+id/btnSub"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/teal_700"
-        android:text="Create Profile"
-        android:textColor="@color/white"
-        android:textSize="25sp" /> <!--Mimma-->
+        <EditText
+            android:id="@+id/etBio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="bio"
+            android:hint="Enter your bio"
+            android:inputType="text"
+            android:textColor="@color/black"
+            android:textSize="22sp" />
 
-</LinearLayout>
+        <Button
+            android:id="@+id/btnSub"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="@color/teal_700"
+            android:text="Create Profile"
+            android:textColor="@color/white"
+            android:textSize="25sp" /> <!--Mimma-->
+
+    </LinearLayout>
+
+</ScrollView>
