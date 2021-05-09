@@ -117,7 +117,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(MESSAGE_COLUMN_LINKS, message.getLinks());
         contentValues.put(MESSAGE_COLUMN_DOCS, message.getDocs());
         contentValues.put(MESSAGE_COLUMN_SENDERID, message.getSenderId());
-        contentValues.put(MESSAGE_COLUMN_RECIEVERID, message.getMessageId());
+        contentValues.put(MESSAGE_COLUMN_RECIEVERID, message.getRecieverId());
         db.insert(MESSAGE_TABLE_NAME, null, contentValues);
     }
 
@@ -144,7 +144,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public List<Message> getAllMessageOfAProfile(Profile profile, boolean sendingTime) {
         List<Message> messageList = new ArrayList<>();
         String profileID = profile.getProfileId();
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(MESSAGE_TABLE_NAME,
                 null,
                 //null, null,

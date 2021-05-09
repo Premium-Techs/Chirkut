@@ -45,6 +45,7 @@ public class ChatPage extends AppCompatActivity {
         setTitle(profile.getProfileName());
         databaseHelper = new DatabaseHelper(this);
         List<Message> messageList = databaseHelper.getAllMessageOfAProfile(profile, true);
+        Log.d(TAG, messageList.toString());
         lvMessages.setAdapter(new CustomAdapter(messageList, this.getApplicationContext()));
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
