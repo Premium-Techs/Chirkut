@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Chirkut">
         <receiver
-            android:name=".ChirkutBroadcasetReceiver"
+            android:name=".ChirkutBroadcastReceiver"
             android:enabled="true"
             android:exported="true"></receiver>
 
