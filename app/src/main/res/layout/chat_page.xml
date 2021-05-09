@@ -63,6 +63,7 @@
                 android:id="@+id/etMessage"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content" />
+
             <Button
                 android:id="@+id/btnSend"
                 android:layout_width="wrap_content"
@@ -83,8 +84,8 @@
                 android:id="@+id/msg_sent_box"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#000"
                 android:hint="@string/app_name"
+                android:textColor="#000"
                 android:textSize="15dp" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
