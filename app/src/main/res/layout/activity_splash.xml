@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/app_body_bg"
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".Splash">
@@ -21,7 +22,7 @@
         android:id="@+id/rhthome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="rhtcht" />
+        android:text="rhthome" />
 
     <Button
         android:id="@+id/rhtcht"
