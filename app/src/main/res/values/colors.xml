@@ -7,4 +7,18 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="app_body_bg">#DDDDDD</color>
+    <color name="msg_other_bg">#44EE77</color>
+    <color name="msg_self_bg">#EE4400</color>
+    <color name="profile_box_bg">#EFF</color>
+    <color name="msg_other_border">#FFFFFF</color>
+    <color name="msg_self_border">#EEEEEE</color>
+    <color name="profile_box_border">#DDDDDD</color>
+    <color name="text_black">#111111</color>
+    <color name="text_white">#EEEEEE</color>
+    <color name="profile_divider">#DDDDDD</color>
+    <color name="chat_divider">#DDDDDD</color>
+    <color name="text_highlight">#FF0000</color>
+    <color name="et_message_bg">#222222</color>
+    <color name="et_message_border">#000000</color>
 </resources>
