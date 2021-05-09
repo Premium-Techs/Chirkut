@@ -11,7 +11,7 @@ public class Message {
     private String links;
     private String docs;
 
-    public Message(){
+    public Message() {
 
     }
 

@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.Serializable;
 import java.util.List;
 
 public class Home extends AppCompatActivity {
@@ -24,7 +25,7 @@ public class Home extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        getSupportActionBar().setTitle("Chirkut");
+        setTitle(R.string.app_name);
         initUI();
         databaseHelper = new DatabaseHelper(this.getApplicationContext());
         List<Profile> profileList = databaseHelper.getAllProfile();
@@ -67,7 +68,10 @@ public class Home extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(Home.this, ChatPage.class);
-                    intent.putExtra("profileID", profile.getProfileId());
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("profile", (Serializable) profile);
+                    //intent.putExtra("profileID", profile.getProfileId());
+                    intent.putExtras(bundle);
                     startActivity(intent);
                 }
             });

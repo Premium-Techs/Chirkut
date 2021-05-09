@@ -1,6 +1,8 @@
 package com.premiumtechs.chirkut;
 
-public class Profile {
+import java.io.Serializable;
+
+public class Profile implements Serializable {
     private String profileId;
     private String profileName;
     private String profileBio;

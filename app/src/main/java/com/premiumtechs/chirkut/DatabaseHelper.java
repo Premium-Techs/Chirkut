@@ -3,6 +3,7 @@ package com.premiumtechs.chirkut;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -11,6 +12,7 @@ import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "chirkut.db";
+    public static final int DATABASE_VERSION = 1;
     public static final String PROFILE_TABLE_NAME = "profile";
     public static final String PROFILE_COLUMN_ID = "profileId";
     public static final String PROFILE_COLUMN_NAME = "profileName";
@@ -34,7 +36,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String MESSAGE_COLUMN_RECIEVERID = "recieverId";
     public static final String MESSAGE_CREATE_TABLE = "create table IF NOT EXISTS "
             + MESSAGE_TABLE_NAME
-            + "(" + MESSAGE_COLUMN_ID + " integer primary key autoincrement, "
+            + "(" + MESSAGE_COLUMN_ID + " text," // + " integer primary key autoincrement, "
             + MESSAGE_COLUMN_MESSAGES + " text,"
             + MESSAGE_COLUMN_SENDTIME + " text,"
             + MESSAGE_COLUMN_RECIEVETIME + " text,"
@@ -47,7 +49,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + " FOREIGN KEY (" + MESSAGE_COLUMN_RECIEVERID + ") REFERENCES " + PROFILE_TABLE_NAME + " (" + PROFILE_COLUMN_ID + "))";
 
     public DatabaseHelper(Context context) {
-        super(context, DATABASE_NAME, null, 1);
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override
@@ -58,8 +60,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS "+PROFILE_TABLE_NAME);
-        db.execSQL("DROP TABLE IF EXISTS "+MESSAGE_TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + PROFILE_TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + MESSAGE_TABLE_NAME);
         onCreate(db);
     }
 
@@ -109,17 +111,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ContentValues contentValues = new ContentValues();
         contentValues.put(MESSAGE_COLUMN_ID, message.getMessageId());
         contentValues.put(MESSAGE_COLUMN_MESSAGES, message.getMessages());
-        contentValues.put(MESSAGE_COLUMN_SENDERID, message.getSenderId());
-        contentValues.put(MESSAGE_COLUMN_RECIEVERID, message.getMessageId());
         contentValues.put(MESSAGE_COLUMN_SENDTIME, message.getSendTime());
         contentValues.put(MESSAGE_COLUMN_RECIEVETIME, message.getRecieveTime());
         contentValues.put(MESSAGE_COLUMN_MEDIA, message.getMedia());
         contentValues.put(MESSAGE_COLUMN_LINKS, message.getLinks());
         contentValues.put(MESSAGE_COLUMN_DOCS, message.getDocs());
+        contentValues.put(MESSAGE_COLUMN_SENDERID, message.getSenderId());
+        contentValues.put(MESSAGE_COLUMN_RECIEVERID, message.getMessageId());
         db.insert(MESSAGE_TABLE_NAME, null, contentValues);
     }
 
-    public List<Message> getAllMessage(String senderId,String recieveId,String sendTime,String recieveTime ) {
+    public List<Message> getAllMessage(String senderId, String recieveId, String sendTime, String recieveTime) {
         List<Message> messageList = new ArrayList<>();
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.query(MESSAGE_TABLE_NAME, null, null, null, null, null, null);
@@ -137,5 +139,61 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         cursor.close();
         return messageList;
+    }
+
+    public List<Message> getAllMessageOfAProfile(Profile profile, boolean sendingTime) {
+        List<Message> messageList = new ArrayList<>();
+        String profileID = profile.getProfileId();
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.query(MESSAGE_TABLE_NAME,
+                null,
+                //null, null,
+                /*
+                MESSAGE_COLUMN_SENDERID + " = ? " ,
+                new String[]{profileID},
+                */
+                MESSAGE_COLUMN_SENDERID + " = ? " + " OR " + MESSAGE_COLUMN_RECIEVERID + " = ? ",
+                new String[]{profileID, profileID},
+                null,
+                null,
+                null);
+        //sendingTime ? MESSAGE_COLUMN_SENDTIME : null);
+        while (cursor.moveToNext()) {
+            String messageId = cursor.getString(cursor.getColumnIndex(MESSAGE_COLUMN_ID));
+            String senderId = cursor.getString(cursor.getColumnIndex(MESSAGE_COLUMN_SENDERID));
+            String recieveId = cursor.getString(cursor.getColumnIndex(MESSAGE_COLUMN_RECIEVERID));
+            String messages = cursor.getString(cursor.getColumnIndex(MESSAGE_COLUMN_MESSAGES));
+            String sendTime = cursor.getString(cursor.getColumnIndex(MESSAGE_COLUMN_SENDTIME));
+            String recieveTime = cursor.getString(cursor.getColumnIndex(MESSAGE_COLUMN_RECIEVETIME));
+            messageList.add(new Message(messageId, senderId, recieveId, messages, sendTime, recieveTime));
+        }
+        cursor.close();
+        db.close();
+        return messageList;
+    }
+
+    public int deleteMessage(String messageID) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        int deleted = db.delete(MESSAGE_TABLE_NAME,
+                MESSAGE_COLUMN_ID + " = ? ",
+                new String[]{messageID}
+        );
+        db.close();
+        return deleted;
+    }
+
+    public int deleteMessagesOfAProfile(Profile profile) {
+        String profileID = profile.getProfileId();
+        SQLiteDatabase db = this.getWritableDatabase();
+        int deleted = db.delete(MESSAGE_TABLE_NAME,
+                MESSAGE_COLUMN_SENDERID + " = ? " + " OR " + MESSAGE_COLUMN_RECIEVERID + " = ? ",
+                new String[]{profileID, profileID}
+        );
+        db.close();
+        return deleted;
+    }
+
+    public long getNumOfProfilesInDB() {
+        return DatabaseUtils.queryNumEntries(this.getReadableDatabase(), PROFILE_TABLE_NAME);
     }
 }

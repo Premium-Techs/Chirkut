@@ -2,17 +2,18 @@ package com.premiumtechs.chirkut;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.List;
 
 public class ChatPage extends AppCompatActivity {
+    final private String TAG = "ChatPage";
     private String messageId;
     private String senderId;
     private String recieveId;
@@ -25,21 +26,25 @@ public class ChatPage extends AppCompatActivity {
     private Button btnSend;
 
     private String profileId;
+    private Profile profile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_page);
-
         initUi();
-        if (profileId==null) {
-            //Toast.makeText(getApplicationContext(),"Profile ID not found", Toast.LENGTH_SHORT).show();
+
+        if (profile == null) {
+            //getIntent().setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+            this.finish();
             startActivity(new Intent(ChatPage.this, Home.class));
             return;
         }
+        profileId = profile.getProfileId();
+        Log.d(TAG, profileId);
+        setTitle(profile.getProfileName());
         databaseHelper = new DatabaseHelper(this);
-        //todo search message for profileID
-        List<Message> messageList = databaseHelper.getAllMessage( senderId, recieveId, sendTime, recieveTime );
+        List<Message> messageList = databaseHelper.getAllMessageOfAProfile(profile, true);
         lvMessages.setAdapter(new CustomAdapter(messageList, this.getApplicationContext()));
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,9 +64,15 @@ public class ChatPage extends AppCompatActivity {
         btnSend = findViewById(R.id.btnSend);
         lvMessages = findViewById(R.id.listMessages);
         //btnDelete = findViewById(R.id.btnDelete);
-        profileId = getIntent().getExtras().getString("profileID");
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            //profileId = getIntent().getExtras().getString("profileID");
+            profile = (Profile) bundle.getSerializable("profile");
+            bundle.clear();
+        }
     }
 
     public void sendMessage(View view) {
+
     }
 }
