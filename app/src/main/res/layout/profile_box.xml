@@ -2,16 +2,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginHorizontal="5dp"
-    android:layout_marginVertical="2dp"
-    android:background="@drawable/border_msg_others"
+    android:background="@drawable/border_profile_box"
     android:orientation="vertical"
-    android:padding="2dp">
+    android:padding="0dp">
 
     <TextView
         android:id="@+id/profileHome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="14sp" />
+        android:layout_margin="0dp"
+        android:padding="20dp"
+        android:textColor="@color/text_black"
+        android:textSize="22sp" />
 
 </LinearLayout>
