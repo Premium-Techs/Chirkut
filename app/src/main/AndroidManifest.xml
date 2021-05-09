@@ -9,12 +9,17 @@
         android:roundIcon="@mipmap/ic_chirkut_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Chirkut">
-        <activity android:name=".Home"></activity>
+        <receiver
+            android:name=".ChirkutBroadcasetReceiver"
+            android:enabled="true"
+            android:exported="true"></receiver>
+
+        <activity android:name=".Home" />
         <activity android:name=".About" />
         <activity android:name=".ChatPage" />
         <activity
             android:name=".EditProfile"
-            android:noHistory="true"></activity>
+            android:noHistory="true" />
         <activity
             android:name=".Splash"
             android:noHistory="true"
