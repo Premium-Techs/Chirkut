@@ -81,7 +81,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return db.delete(PROFILE_TABLE_NAME, "profileId = ? ", new String[]{profile.getProfileId()});
     }
 
-    public Profile getProfileFromID (String profileID) {
+    public Profile getProfileFromID(String profileID) {
         Profile profile = null;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(PROFILE_TABLE_NAME, null, "profileID = ?", new String[]{profileID}, null, null, null);
@@ -94,7 +94,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         cursor.close();
         db.close();
-        return  profile;
+        return profile;
     }
 
     public int updateProfile(Profile profile) {
