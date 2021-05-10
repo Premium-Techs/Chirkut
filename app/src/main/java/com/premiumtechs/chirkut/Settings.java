@@ -2,23 +2,20 @@ package com.premiumtechs.chirkut;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.List;
 
 public class Settings extends AppCompatActivity {
     private DatabaseHelper databaseHelper;
-    /*
-    private String profileId;
-    private EditText profileName;
-    private EditText profileBio;
-    private EditText profilePhoneNo;
-    */
     private TextView tvProfile;
     private Button btnEdit;
     private Button btnDelete, btnStartChat;
@@ -43,43 +40,40 @@ public class Settings extends AppCompatActivity {
                 startActivity(switchActivityIntent);
             }
         });
-        btnStartChat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent switchActivityIntent = new Intent(Settings.this, ChatPage.class);
-                startActivity(switchActivityIntent);
-            }
-        });
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (profiles != null && profiles.get(0) != null) {
-                    Profile profile = profiles.get(0);
-                    int check = databaseHelper.deleteProfile(profile);
-                    //Toast.makeText(Settings.this, String.valueOf(check), Toast.LENGTH_SHORT).show();
-                    Toast.makeText(Settings.this, "Successfully Deleted", Toast.LENGTH_SHORT).show();
-                }
-                Intent switchActivityIntent = new Intent(Settings.this, CreateProfile.class);
+                new DatabaseHelper(v.getContext()).deleteAll();
+                Intent switchActivityIntent = new Intent(v.getContext(), Splash.class);
                 startActivity(switchActivityIntent);
             }
         });
     }
 
-    /*
-    private void setProfileData(List<Profile> profiles) {
-        if(profiles != null && profiles.get(0) != null){
-            Profile profile = profiles.get(0);
-            profileName.setText(profile.getProfileName());
-            profilePhoneNo.setText(profile.getProfilePhoneNo());
-            profileBio.setText(profile.getProfileBio());
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu_settings, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_home:
+                startActivity(new Intent(Settings.this, Home.class));
+                return true;
+            case R.id.menu_about:
+                startActivity(new Intent(Settings.this, About.class));
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
-    */
 
     private void initUi() {
         tvProfile = findViewById(R.id.tvProfile);
         btnEdit = findViewById(R.id.btnEdit);
         btnDelete = findViewById(R.id.btnDelete);
-        btnStartChat = findViewById(R.id.btnStartChat);
     }
 }
