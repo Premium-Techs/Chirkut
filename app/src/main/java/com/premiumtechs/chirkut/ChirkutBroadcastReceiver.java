@@ -10,16 +10,12 @@ import android.net.wifi.p2p.WifiP2pManager;
 public class ChirkutBroadcastReceiver extends BroadcastReceiver {
     private WifiP2pManager wifiP2pManager = null;
     private WifiP2pManager.Channel channel = null;
-    private CreateProfile mainActivity = null;
+    private WifiActivity wifiActivity = null;
 
-    public ChirkutBroadcastReceiver() {
-
-    }
-
-    public ChirkutBroadcastReceiver(WifiP2pManager wifiP2pManager, WifiP2pManager.Channel channel, CreateProfile mainActivity) {
+    public ChirkutBroadcastReceiver(WifiP2pManager wifiP2pManager, WifiP2pManager.Channel channel, WifiActivity wifiActivity) {
         this.wifiP2pManager = wifiP2pManager;
         this.channel = channel;
-        this.mainActivity = mainActivity;
+        this.wifiActivity = wifiActivity;
     }
 
     @SuppressLint("MissingPermission")

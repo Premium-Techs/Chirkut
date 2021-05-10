@@ -12,11 +12,11 @@ public class Profile implements Serializable {
 
     }
 
-    public Profile(String profileId, String profileName, String profileBio, String profilePhoneNo) {
+    public Profile(String profileId, String profileName, String profilePhoneNo, String profileBio) {
         this.profileId = profileId;
         this.profileName = profileName;
-        this.profileBio = profileBio;
         this.profilePhoneNo = profilePhoneNo;
+        this.profileBio = profileBio;
     }
 
     public String getProfileId() {

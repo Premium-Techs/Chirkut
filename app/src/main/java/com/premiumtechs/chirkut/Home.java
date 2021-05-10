@@ -93,7 +93,7 @@ public class Home extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent intent = new Intent(Home.this, ChatPage.class);
                     Bundle bundle = new Bundle();
-                    bundle.putSerializable("profile", (Serializable) profile);
+                    bundle.putSerializable("profile", profile);
                     //intent.putExtra("profileID", profile.getProfileId());
                     intent.putExtras(bundle);
                     startActivity(intent);

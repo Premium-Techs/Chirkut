@@ -12,13 +12,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.List;
-
 public class Settings extends AppCompatActivity {
     private DatabaseHelper databaseHelper;
     private TextView tvProfile;
     private Button btnEdit;
-    private Button btnDelete, btnStartChat;
+    private Button btnDelete;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,17 +24,16 @@ public class Settings extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
         initUi();
         databaseHelper = new DatabaseHelper(this);
-        List<Profile> profiles = databaseHelper.getAllProfile();
+        Profile profile = databaseHelper.getProfileFromID("0");
         StringBuilder stringBuilder = new StringBuilder();
-        for (Profile profile : profiles) {
-            stringBuilder.append(profile.getProfileId() + "\n" + profile.getProfileName() + "\n" + profile.getProfilePhoneNo() + "\n" + profile.getProfileBio() + "\n");
-        }
+        stringBuilder.append("Name : " + profile.getProfileName() + "\n"
+                + "Phone no.: " + profile.getProfilePhoneNo() + "\n"
+                + "Bio: " + profile.getProfileBio() + "\n");
         tvProfile.setText(stringBuilder.toString().trim());
-
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent switchActivityIntent = new Intent(Settings.this, EditProfile.class);
+                Intent switchActivityIntent = new Intent(v.getContext(), EditProfile.class);
                 startActivity(switchActivityIntent);
             }
         });

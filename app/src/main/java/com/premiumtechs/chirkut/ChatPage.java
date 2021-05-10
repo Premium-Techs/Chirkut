@@ -3,13 +3,17 @@ package com.premiumtechs.chirkut;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +22,7 @@ import java.util.List;
 
 public class ChatPage extends AppCompatActivity {
     final private String TAG = "ChatPage";
+    public int selectedMsg = -1;
     private String messageId;
     private String senderId;
     private String recieveId;
@@ -28,7 +33,6 @@ public class ChatPage extends AppCompatActivity {
     private EditText profilePhoneNo;
     private DatabaseHelper databaseHelper;
     private Button btnSend;
-
     private String profileId;
     private Profile profile;
 
@@ -49,7 +53,7 @@ public class ChatPage extends AppCompatActivity {
         setTitle(profile.getProfileName());
         databaseHelper = new DatabaseHelper(this);
         List<Message> messageList = databaseHelper.getAllMessageOfAProfile(profile, true);
-        Log.d(TAG, messageList.toString());
+        //Log.d(TAG, messageList.toString());
         lvMessages.setAdapter(new CustomAdapter(messageList, this.getApplicationContext()));
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,6 +66,63 @@ public class ChatPage extends AppCompatActivity {
             }
         });
 
+        ListView listViewMessages = findViewById(R.id.listMessages);
+        listViewMessages.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
+        listViewMessages.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            }
+        });
+        listViewMessages.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                listViewMessages.setSelection(position);
+                selectedMsg = position;
+                view.setSelected(true);
+                return true;
+            }
+        });
+        listViewMessages.setMultiChoiceModeListener(new AbsListView.MultiChoiceModeListener() {
+            @Override
+            public void onItemCheckedStateChanged(ActionMode mode, int position, long id, boolean checked) {
+
+            }
+
+            @Override
+            public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+                MenuInflater menuInflater = mode.getMenuInflater();
+                menuInflater.inflate(R.menu.menu_context, menu);
+                return true;
+            }
+
+            @Override
+            public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+                return false;
+            }
+
+            @Override
+            public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.menu_delete:
+                        dell();
+                        mode.finish();
+                        return true;
+                    default:
+                        return false;
+                }
+            }
+
+            public void dell() {
+                Toast.makeText(getApplicationContext(), listViewMessages.getItemAtPosition(selectedMsg).toString(), Toast.LENGTH_LONG).show();
+                Message deleteMessage = (Message) listViewMessages.getItemAtPosition(selectedMsg);
+                new DatabaseHelper(getApplicationContext()).deleteMessage(deleteMessage.getMessageId());
+            }
+
+            @Override
+            public void onDestroyActionMode(ActionMode mode) {
+                selectedMsg = -1;
+            }
+        });
     }
 
     @Override

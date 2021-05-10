@@ -15,10 +15,9 @@ public class EditProfile extends AppCompatActivity {
     private DatabaseHelper databaseHelper;
     //private String profileId;
     private EditText profileName;
-    private EditText profileBio;
     private EditText profilePhoneNo;
+    private EditText profileBio;
     private Button btnUpdate;
-    //private Button btnDelete;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +39,6 @@ public class EditProfile extends AppCompatActivity {
                             profilePhoneNo.getText().toString(),
                             profileBio.getText().toString()
                     );
-                    //Log.i("Profile", "onClick: "+newProfile.toString());
                     int check = databaseHelper.updateProfile(newProfile);
                     Toast.makeText(EditProfile.this, "Successfully Updated", Toast.LENGTH_SHORT).show();
                 }
@@ -64,7 +62,6 @@ public class EditProfile extends AppCompatActivity {
         profilePhoneNo = findViewById(R.id.edtPhoneNo);
         profileBio = findViewById(R.id.edtBio);
         btnUpdate = findViewById(R.id.btnUpdate);
-        //btnDelete = findViewById(R.id.btnDelete);
     }
 
 }

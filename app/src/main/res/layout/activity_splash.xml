@@ -11,6 +11,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
         android:fontFamily="cursive"
         android:text="@string/splash_welcome_new"
         android:textAlignment="center"
@@ -19,40 +20,39 @@
         android:textSize="50sp" />
 
     <Button
-        android:id="@+id/rhthome"
+        android:id="@+id/btnHome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="rhthome" />
+        android:text="HOME" />
 
     <Button
-        android:id="@+id/rhtcht"
+        android:id="@+id/btnCht"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="rhtcht" />
+        android:text="CHAT" />
 
     <Button
-        android:id="@+id/rhtcreate"
+        android:id="@+id/btnCreate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="rhtcreate" />
+        android:text="CREATE" />
 
     <Button
-        android:id="@+id/rhtedt"
+        android:id="@+id/btnEdt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="rhtedt" />
+        android:text="EDIT" />
 
     <Button
-        android:id="@+id/rhtsett"
+        android:id="@+id/btnSetting"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="rhtsett" />
+        android:text="SETTINGS" />
 
     <Button
-        android:id="@+id/rhtabt"
+        android:id="@+id/btnAbt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="rhtabt" />
-
+        android:text="ABOUT" />
 
 </LinearLayout>

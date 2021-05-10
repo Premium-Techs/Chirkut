@@ -12,8 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 public class CreateProfile extends AppCompatActivity {
     private String profileId;
     private EditText profileName;
-    private EditText profileBio;
     private EditText profilePhoneNo;
+    private EditText profileBio;
     private DatabaseHelper databaseHelper;
     private Button btnSub;
 
@@ -21,11 +21,12 @@ public class CreateProfile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_profile);
+
         databaseHelper = new DatabaseHelper(this);
-        profileId = String.valueOf(System.currentTimeMillis());
+        profileId = "0";
         profileName = findViewById(R.id.etName);
-        profileBio = findViewById(R.id.etBio);
         profilePhoneNo = findViewById(R.id.etPhoneNo);
+        profileBio = findViewById(R.id.etBio);
         btnSub = findViewById(R.id.btnSub);
 
         btnSub.setOnClickListener(new View.OnClickListener() {
@@ -35,6 +36,7 @@ public class CreateProfile extends AppCompatActivity {
                 databaseHelper.insertProfile(profile);
                 Toast.makeText(getApplicationContext(), "Welcome " + profileName.getText().toString(), Toast.LENGTH_SHORT).show();
                 Intent switchActivityIntent = new Intent(CreateProfile.this, Home.class);
+                switchActivityIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(switchActivityIntent);
             }
         });

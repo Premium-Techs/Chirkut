@@ -21,8 +21,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String PROFILE_CREATE_TABLE = "create table IF NOT EXISTS "
             + PROFILE_TABLE_NAME
             + "(" + PROFILE_COLUMN_ID + " integer primary key autoincrement, "
-            + PROFILE_COLUMN_PHONENO + " text,"
             + PROFILE_COLUMN_NAME + " text,"
+            + PROFILE_COLUMN_PHONENO + " text,"
             + PROFILE_COLUMN_BIO + " text)";
     public static final String MESSAGE_TABLE_NAME = "message";
     public static final String MESSAGE_COLUMN_ID = "messageId";
@@ -36,7 +36,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String MESSAGE_COLUMN_RECIEVERID = "recieverId";
     public static final String MESSAGE_CREATE_TABLE = "create table IF NOT EXISTS "
             + MESSAGE_TABLE_NAME
-            + "(" + MESSAGE_COLUMN_ID + " text," // + " integer primary key autoincrement, "
+            + "(" + MESSAGE_COLUMN_ID + " integer primary key autoincrement, "
             + MESSAGE_COLUMN_MESSAGES + " text,"
             + MESSAGE_COLUMN_SENDTIME + " text,"
             + MESSAGE_COLUMN_RECIEVETIME + " text,"
@@ -73,11 +73,28 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(PROFILE_COLUMN_PHONENO, profile.getProfilePhoneNo());
         contentValues.put(PROFILE_COLUMN_BIO, profile.getProfileBio());
         db.insert(PROFILE_TABLE_NAME, null, contentValues);
+        db.close();
     }
 
     public int deleteProfile(Profile profile) {
         SQLiteDatabase db = this.getWritableDatabase();
-        return db.delete(PROFILE_TABLE_NAME, "profileId = ?", new String[]{profile.getProfileId()});
+        return db.delete(PROFILE_TABLE_NAME, "profileId = ? ", new String[]{profile.getProfileId()});
+    }
+
+    public Profile getProfileFromID (String profileID) {
+        Profile profile = null;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(PROFILE_TABLE_NAME, null, "profileID = ?", new String[]{profileID}, null, null, null);
+        if (cursor.moveToNext()) {
+            String profileId = cursor.getString(cursor.getColumnIndex(PROFILE_COLUMN_ID));
+            String profileName = cursor.getString(cursor.getColumnIndex(PROFILE_COLUMN_NAME));
+            String profilePhoneNo = cursor.getString(cursor.getColumnIndex(PROFILE_COLUMN_PHONENO));
+            String profileBio = cursor.getString(cursor.getColumnIndex(PROFILE_COLUMN_BIO));
+            profile = new Profile(profileID, profileName, profilePhoneNo, profileBio);
+        }
+        cursor.close();
+        db.close();
+        return  profile;
     }
 
     public int updateProfile(Profile profile) {
@@ -102,7 +119,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             profiles.add(new Profile(profileId, profileName, profilePhoneNo, profileBio));
         }
         cursor.close();
+        db.close();
         return profiles;
+    }
+
+    public void deleteAll() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(MESSAGE_TABLE_NAME, null, null);
+        db.delete(PROFILE_TABLE_NAME, null, null);
+        db.close();
     }
 
     /*Message_Table*/
@@ -119,6 +144,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(MESSAGE_COLUMN_SENDERID, message.getSenderId());
         contentValues.put(MESSAGE_COLUMN_RECIEVERID, message.getRecieverId());
         db.insert(MESSAGE_TABLE_NAME, null, contentValues);
+        db.close();
     }
 
     public List<Message> getAllMessage(String senderId, String recieveId, String sendTime, String recieveTime) {
@@ -147,13 +173,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(MESSAGE_TABLE_NAME,
                 null,
-                //null, null,
-                /*
-                MESSAGE_COLUMN_SENDERID + " = ? " ,
-                new String[]{profileID},
-                */
-                MESSAGE_COLUMN_SENDERID + " = ? " + " OR " + MESSAGE_COLUMN_RECIEVERID + " = ? ",
-                new String[]{profileID, profileID},
+                " ( " + MESSAGE_COLUMN_SENDERID + " = ? " + " AND " + MESSAGE_COLUMN_RECIEVERID + " = ? )" + " OR " + " ( " + MESSAGE_COLUMN_SENDERID + " = ? " + " AND " + MESSAGE_COLUMN_RECIEVERID + " = ? " + " ) ",
+                new String[]{profileID, "0", "0", profileID},
                 null,
                 null,
                 null);

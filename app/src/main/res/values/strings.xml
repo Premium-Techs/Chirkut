@@ -17,7 +17,7 @@
         \nAll data are stored in the smartphone using SQLite database.\n
     </string>
     <string name="about_contrib">
-        This project was done by team \'Premium Techs\' as part of the Android project.\n
+        \nThis project was done by team \'Premium Techs\' as part of the Mobile Application course.\n
         \nThe team consisted of five students of PGDIT 20th batch, Institute of Inormation Technology, University of Dhaka.\n
         2005: Mimma Akter\n
         2008: Md. Nazmus Sakib\n
@@ -25,4 +25,6 @@
         2039: Ahmed Ullah\n
         2003: Md. Ashraful Haq Rahat\n
     </string>
+    <string name="about_link">\nSource code of this project is available at:
+        \nhttps://github.com/Premium-Techs/Chirkut/</string>
 </resources>

@@ -11,7 +11,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Locale;
 
 public class CustomAdapter extends ArrayAdapter<Message> {
     private final List<Message> dataSet;
@@ -55,7 +57,11 @@ public class CustomAdapter extends ArrayAdapter<Message> {
             viewHolder.msgLayoutInner.setLayoutParams(layoutParamsOthers);
         }
         viewHolder.msgBody.setText(message.getMessages());
-        viewHolder.msgTime.setText(message.getSendTime());
+        //Date sendDate = new Date(message.getSendTime());
+        //viewHolder.msgTime.setText(DateFormat.getDateInstance(DateFormat.FULL).format(Long.parseLong(message.getSendTime())));
+        String dateFormat = "dd/MM/YY hh:mm:ss";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(dateFormat, Locale.US);
+        viewHolder.msgTime.setText(simpleDateFormat.format(Long.parseLong(message.getSendTime())));
 
         return convertView;
     }

@@ -100,7 +100,7 @@ public class Message {
     @Override
     public String toString() {
         return "Message{" +
-                ", messageId='" + messageId + '\'' +
+                " messageId='" + messageId + '\'' +
                 ", senderId='" + senderId + '\'' +
                 ", recieverId='" + recieverId + '\'' +
                 ", messages='" + messages + '\'' +

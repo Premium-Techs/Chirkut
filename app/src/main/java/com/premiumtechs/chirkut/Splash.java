@@ -2,6 +2,7 @@ package com.premiumtechs.chirkut;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -25,6 +26,13 @@ public class Splash extends AppCompatActivity implements Runnable {
         }
 
         setContentView(R.layout.activity_splash);
+        try {
+            Log.d("MAC ADDRESS", "MAC ADDRESS");
+            Log.d("MAC ADDRESS", ChirkutMACFinder.getMacAddress());
+            Log.d("MAC ADDRESS", "MAC ADDRESS");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         /*
         DatabaseHelper databaseHelper = new DatabaseHelper(this);
         databaseHelper.getReadableDatabase();
@@ -34,29 +42,29 @@ public class Splash extends AppCompatActivity implements Runnable {
             databaseHelper.insertMessage(new Message("" + i, "2", "3", "4", "5", "6"));
         }
         */
-        Button rhtabt = findViewById(R.id.rhtabt);
-        rhtabt.setOnClickListener(new View.OnClickListener() {
+        Button btnAbt = findViewById(R.id.btnAbt);
+        btnAbt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Splash.this, About.class));
             }
         });
-        Button rhtcht = findViewById(R.id.rhtcht);
-        rhtcht.setOnClickListener(new View.OnClickListener() {
+        Button btnChat = findViewById(R.id.btnCht);
+        btnChat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Splash.this, ChatPage.class));
             }
         });
-        Button rhthome = findViewById(R.id.rhthome);
-        rhthome.setOnClickListener(new View.OnClickListener() {
+        Button btnHome = findViewById(R.id.btnHome);
+        btnHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Splash.this, Home.class));
             }
         });
-        Button rhtedt = findViewById(R.id.rhtedt);
-        rhtedt.setOnClickListener(new View.OnClickListener() {
+        Button btnEdt = findViewById(R.id.btnEdt);
+        btnEdt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Splash.this, Settings.class));
@@ -98,12 +106,12 @@ public class Splash extends AppCompatActivity implements Runnable {
                     "Veni, Vedi, Vici",
                     "From the summit of yonder pyramids, forty centuries look down upon you!"
             };
-            databaseHelper.insertMessage(new Message("a", profileids[0], profileids[5], quotes[1], "sendtime", "receivetime"));
-            databaseHelper.insertMessage(new Message("b", profileids[5], profileids[0], quotes[4], "sendtime", "receivetime"));
-            databaseHelper.insertMessage(new Message("c", profileids[0], profileids[5], quotes[0], "sendtime", "receivetime"));
-            databaseHelper.insertMessage(new Message("d", profileids[5], profileids[0], quotes[2], "sendtime", "receivetime"));
-            databaseHelper.insertMessage(new Message("e", profileids[0], profileids[5], quotes[5], "sendtime", "receivetime"));
-            databaseHelper.insertMessage(new Message("f", profileids[5], profileids[0], quotes[3], "sendtime", "receivetime"));
+            databaseHelper.insertMessage(new Message(null, profileids[0], profileids[5], quotes[1], String.valueOf(System.currentTimeMillis()), String.valueOf(System.currentTimeMillis())));
+            databaseHelper.insertMessage(new Message(null, profileids[5], profileids[0], quotes[4], String.valueOf(System.currentTimeMillis()), String.valueOf(System.currentTimeMillis())));
+            databaseHelper.insertMessage(new Message(null, profileids[0], profileids[5], quotes[0], String.valueOf(System.currentTimeMillis()), String.valueOf(System.currentTimeMillis())));
+            databaseHelper.insertMessage(new Message(null, profileids[5], profileids[0], quotes[2], String.valueOf(System.currentTimeMillis()), String.valueOf(System.currentTimeMillis())));
+            databaseHelper.insertMessage(new Message(null, profileids[0], profileids[5], quotes[5], String.valueOf(System.currentTimeMillis()), String.valueOf(System.currentTimeMillis())));
+            databaseHelper.insertMessage(new Message(null, profileids[5], profileids[0], quotes[3], String.valueOf(System.currentTimeMillis()), String.valueOf(System.currentTimeMillis())));
         }
     }
 }
