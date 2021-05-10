@@ -44,7 +44,7 @@ public class EditProfile extends AppCompatActivity {
                     int check = databaseHelper.updateProfile(newProfile);
                     Toast.makeText(EditProfile.this, "Successfully Updated", Toast.LENGTH_SHORT).show();
                 }
-                Intent switchActivityIntent = new Intent(EditProfile.this, UpdateProfile.class);
+                Intent switchActivityIntent = new Intent(EditProfile.this, Settings.class);
                 startActivity(switchActivityIntent);
             }
         });

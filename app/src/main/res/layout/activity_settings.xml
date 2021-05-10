@@ -18,7 +18,7 @@
         android:padding="10dp"
         android:scrollbars="vertical"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:context=".UpdateProfile">
+        tools:context=".Settings">
 
         <LinearLayout
             android:layout_width="wrap_content"

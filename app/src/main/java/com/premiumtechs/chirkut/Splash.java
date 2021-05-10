@@ -17,7 +17,7 @@ public class Splash extends AppCompatActivity implements Runnable {
         long numOfProfilesInDB = new DatabaseHelper(this.getApplicationContext()).getNumOfProfilesInDB();
         if (DEBUG == 0) {
             if (numOfProfilesInDB == 0) {
-                startActivity(new Intent(Splash.this, MainActivity.class));
+                startActivity(new Intent(Splash.this, CreateProfile.class));
             } else {
                 startActivity(new Intent(Splash.this, Home.class));
             }
@@ -53,6 +53,13 @@ public class Splash extends AppCompatActivity implements Runnable {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Splash.this, Home.class));
+            }
+        });
+        Button rhtedt = findViewById(R.id.rhtedt);
+        rhtedt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Splash.this, Settings.class));
             }
         });
         if (DEBUG != 0 && numOfProfilesInDB == 0) {

@@ -8,11 +8,15 @@ import android.net.NetworkInfo;
 import android.net.wifi.p2p.WifiP2pManager;
 
 public class ChirkutBroadcastReceiver extends BroadcastReceiver {
-    private final WifiP2pManager wifiP2pManager;
-    private final WifiP2pManager.Channel channel;
-    private final MainActivity mainActivity;
+    private WifiP2pManager wifiP2pManager = null;
+    private WifiP2pManager.Channel channel = null;
+    private CreateProfile mainActivity = null;
 
-    public ChirkutBroadcastReceiver(WifiP2pManager wifiP2pManager, WifiP2pManager.Channel channel, MainActivity mainActivity) {
+    public ChirkutBroadcastReceiver() {
+
+    }
+
+    public ChirkutBroadcastReceiver(WifiP2pManager wifiP2pManager, WifiP2pManager.Channel channel, CreateProfile mainActivity) {
         this.wifiP2pManager = wifiP2pManager;
         this.channel = channel;
         this.mainActivity = mainActivity;

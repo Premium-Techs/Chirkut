@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.List;
 
-public class UpdateProfile extends AppCompatActivity {
+public class Settings extends AppCompatActivity {
     private DatabaseHelper databaseHelper;
     /*
     private String profileId;
@@ -26,7 +26,7 @@ public class UpdateProfile extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.content_update_profile);
+        setContentView(R.layout.activity_settings);
         initUi();
         databaseHelper = new DatabaseHelper(this);
         List<Profile> profiles = databaseHelper.getAllProfile();
@@ -39,14 +39,14 @@ public class UpdateProfile extends AppCompatActivity {
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent switchActivityIntent = new Intent(UpdateProfile.this, EditProfile.class);
+                Intent switchActivityIntent = new Intent(Settings.this, EditProfile.class);
                 startActivity(switchActivityIntent);
             }
         });
         btnStartChat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent switchActivityIntent = new Intent(UpdateProfile.this, ChatPage.class);
+                Intent switchActivityIntent = new Intent(Settings.this, ChatPage.class);
                 startActivity(switchActivityIntent);
             }
         });
@@ -56,10 +56,10 @@ public class UpdateProfile extends AppCompatActivity {
                 if (profiles != null && profiles.get(0) != null) {
                     Profile profile = profiles.get(0);
                     int check = databaseHelper.deleteProfile(profile);
-                    //Toast.makeText(UpdateProfile.this, String.valueOf(check), Toast.LENGTH_SHORT).show();
-                    Toast.makeText(UpdateProfile.this, "Successfully Deleted", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(Settings.this, String.valueOf(check), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Settings.this, "Successfully Deleted", Toast.LENGTH_SHORT).show();
                 }
-                Intent switchActivityIntent = new Intent(UpdateProfile.this, MainActivity.class);
+                Intent switchActivityIntent = new Intent(Settings.this, CreateProfile.class);
                 startActivity(switchActivityIntent);
             }
         });

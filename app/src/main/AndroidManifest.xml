@@ -32,11 +32,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".UpdateProfile"
+            android:name=".Settings"
             android:label="@string/title_activity_update_profile"
             android:theme="@style/Theme.Chirkut.NoActionBar" />
         <activity
-            android:name=".MainActivity"
+            android:name=".CreateProfile"
             android:theme="@style/Theme.Chirkut.NoActionBar" />
     </application>
 
