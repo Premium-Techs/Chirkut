@@ -146,7 +146,6 @@ public class ChatPage extends AppCompatActivity {
         }
     }
 
-
     private void initUi() {
         etMessage = findViewById(R.id.etMessage);
         btnSend = findViewById(R.id.btnSend);

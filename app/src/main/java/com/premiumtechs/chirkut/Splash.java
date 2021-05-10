@@ -9,7 +9,7 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Splash extends AppCompatActivity implements Runnable {
-    final int DEBUG = 1;
+    final int DEBUG = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
