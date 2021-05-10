@@ -58,10 +58,17 @@ public class ChatPage extends AppCompatActivity {
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //todo send message
                 Message message = new Message();
+                message.setMessages(etMessage.getText().toString().trim());
+                message.setSenderId("0");
+                message.setRecieverId(profileId);
+                message.setSendTime(String.valueOf(System.currentTimeMillis()));
+                message.setRecieveTime(null);
                 databaseHelper.insertMessage(message);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("profile", profile);
                 Intent switchActivityIntent = new Intent(ChatPage.this, ChatPage.class);
+                switchActivityIntent.putExtras(bundle);
                 startActivity(switchActivityIntent);
             }
         });

@@ -34,6 +34,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String MESSAGE_COLUMN_DOCS = "docs";
     public static final String MESSAGE_COLUMN_SENDERID = "senderId"; //FOREIGN KEY PROFILEID
     public static final String MESSAGE_COLUMN_RECIEVERID = "recieverId";
+    public static final String MESSAGE_COLUMN_STATUS = "status";
     public static final String MESSAGE_CREATE_TABLE = "create table IF NOT EXISTS "
             + MESSAGE_TABLE_NAME
             + "(" + MESSAGE_COLUMN_ID + " integer primary key autoincrement, "
@@ -45,6 +46,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + MESSAGE_COLUMN_MEDIA + " text,"
             + MESSAGE_COLUMN_LINKS + " text,"
             + MESSAGE_COLUMN_DOCS + " text,"
+            + MESSAGE_COLUMN_STATUS + " text,"
             + " FOREIGN KEY (" + MESSAGE_COLUMN_SENDERID + ") REFERENCES " + PROFILE_TABLE_NAME + " (" + PROFILE_COLUMN_ID + "),"
             + " FOREIGN KEY (" + MESSAGE_COLUMN_RECIEVERID + ") REFERENCES " + PROFILE_TABLE_NAME + " (" + PROFILE_COLUMN_ID + "))";
 

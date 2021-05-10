@@ -2,79 +2,31 @@ package com.premiumtechs.chirkut;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Splash extends AppCompatActivity implements Runnable {
-    final int DEBUG = 0;
+    final int DEBUG = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         long numOfProfilesInDB = new DatabaseHelper(this.getApplicationContext()).getNumOfProfilesInDB();
-        if (DEBUG == 0) {
-            if (numOfProfilesInDB == 0) {
-                startActivity(new Intent(Splash.this, CreateProfile.class));
-            } else {
-                startActivity(new Intent(Splash.this, Home.class));
-            }
-            this.finish();
+        //if (DEBUG == 0 && numOfProfilesInDB == 0) {
+        if (numOfProfilesInDB == 0) {
+            startActivity(new Intent(Splash.this, CreateProfile.class));
         }
-
-        setContentView(R.layout.activity_splash);
-        try {
-            Log.d("MAC ADDRESS", "MAC ADDRESS");
-            Log.d("MAC ADDRESS", ChirkutMACFinder.getMacAddress());
-            Log.d("MAC ADDRESS", "MAC ADDRESS");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        /*
-        DatabaseHelper databaseHelper = new DatabaseHelper(this);
-        databaseHelper.getReadableDatabase();
-        for (int i = 0; i < 10; i++) {
-            databaseHelper.deleteProfile(new Profile("" + i, "name" + i, "bio" + i, "phone" + i));
-            databaseHelper.insertProfile(new Profile("" + i, "name" + i, "bio" + i, "phone" + i));
-            databaseHelper.insertMessage(new Message("" + i, "2", "3", "4", "5", "6"));
-        }
-        */
-        Button btnAbt = findViewById(R.id.btnAbt);
-        btnAbt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Splash.this, About.class));
-            }
-        });
-        Button btnChat = findViewById(R.id.btnCht);
-        btnChat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Splash.this, ChatPage.class));
-            }
-        });
-        Button btnHome = findViewById(R.id.btnHome);
-        btnHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Splash.this, Home.class));
-            }
-        });
-        Button btnEdt = findViewById(R.id.btnEdt);
-        btnEdt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Splash.this, Settings.class));
-            }
-        });
-        if (DEBUG != 0 && numOfProfilesInDB == 0) {
+        if (DEBUG != 0) {
             DummyDatabaseHelper dummyDatabaseHelper = new DummyDatabaseHelper();
             dummyDatabaseHelper.insertDummyProfile();
         }
+        if (numOfProfilesInDB != 0) {
+            startActivity(new Intent(Splash.this, Home.class));
+        }
+        setContentView(R.layout.activity_splash);
+        this.finish();
     }
+
 
     @Override
     public void run() {
@@ -84,7 +36,7 @@ public class Splash extends AppCompatActivity implements Runnable {
         public void insertDummyProfile() {
             DatabaseHelper databaseHelper = new DatabaseHelper(getApplicationContext());
             String[] profileids = new String[]{"0", "5", "8", "27", "39", "2003", "2005", "2008", "2027", "2039", "202003"};
-            databaseHelper.insertProfile(new Profile(profileids[0], "Me", "000", "Me"));
+            //databaseHelper.insertProfile(new Profile(profileids[0], "Me", "000", "Me"));
             databaseHelper.insertProfile(new Profile(profileids[1], "Mimma", "016", "Mimma"));
             databaseHelper.insertProfile(new Profile(profileids[2], "Sakib", "017", "Sakib"));
             databaseHelper.insertProfile(new Profile(profileids[3], "Naima", "017", "Naima"));
@@ -121,27 +73,3 @@ public class Splash extends AppCompatActivity implements Runnable {
         }
     }
 }
-
-
-            /*
-            for (int i = 0; i < 20; i++) {
-                Profile profile = new Profile(
-                        String.valueOf(i),
-                        String.valueOf(i),
-                        String.valueOf(i),
-                        String.valueOf(i)
-                );
-                databaseHelper.insertProfile(profile);
-                for (int j = 0; j < 30; j++) {
-                    Message message = new Message(
-                            i + " " + j,
-                            String.valueOf(i),
-                            String.valueOf(i),
-                            i + " " + j + " From the summit of yonder pyramids forty centuries look down upon you. \n He who has one thousand friends has nobody to spare, he who has one enemy meets him everywhere ",
-                            String.valueOf(System.currentTimeMillis()),
-                            i + " " + j
-                    );
-                    databaseHelper.insertMessage(message);
-                }
-            }
-            */

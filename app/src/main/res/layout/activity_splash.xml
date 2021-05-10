@@ -18,41 +18,41 @@
         android:textAllCaps="false"
         android:textColor="@color/teal_700"
         android:textSize="50sp" />
+    <!--
+        <Button
+            android:id="@+id/btnHome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="HOME" />
 
-    <Button
-        android:id="@+id/btnHome"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="HOME" />
+        <Button
+            android:id="@+id/btnCht"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CHAT" />
 
-    <Button
-        android:id="@+id/btnCht"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="CHAT" />
+        <Button
+            android:id="@+id/btnCreate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CREATE" />
 
-    <Button
-        android:id="@+id/btnCreate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="CREATE" />
+        <Button
+            android:id="@+id/btnEdt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="EDIT" />
 
-    <Button
-        android:id="@+id/btnEdt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="EDIT" />
+        <Button
+            android:id="@+id/btnSetting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SETTINGS" />
 
-    <Button
-        android:id="@+id/btnSetting"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="SETTINGS" />
-
-    <Button
-        android:id="@+id/btnAbt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="ABOUT" />
-
+        <Button
+            android:id="@+id/btnAbt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ABOUT" />
+    -->
 </LinearLayout>
