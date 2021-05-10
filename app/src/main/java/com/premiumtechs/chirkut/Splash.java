@@ -84,17 +84,17 @@ public class Splash extends AppCompatActivity implements Runnable {
         public void insertDummyProfile() {
             DatabaseHelper databaseHelper = new DatabaseHelper(getApplicationContext());
             String[] profileids = new String[]{"0", "5", "8", "27", "39", "2003", "2005", "2008", "2027", "2039", "202003"};
-            databaseHelper.insertProfile(new Profile(profileids[0], "Me", "Me", "000"));
-            databaseHelper.insertProfile(new Profile(profileids[1], "Mimma", "Mimma", "016"));
-            databaseHelper.insertProfile(new Profile(profileids[2], "Sakib", "Sakib", "017"));
-            databaseHelper.insertProfile(new Profile(profileids[3], "Naima", "Naima", "017"));
-            databaseHelper.insertProfile(new Profile(profileids[4], "Ahmed", "Ahmed", "017"));
-            databaseHelper.insertProfile(new Profile(profileids[5], "Rahat", "Rahat", "015"));
-            databaseHelper.insertProfile(new Profile(profileids[6], "Mimma Akter", "Mimma", "016"));
-            databaseHelper.insertProfile(new Profile(profileids[7], "Md. Nazmus Sakib", "Sakib", "017"));
-            databaseHelper.insertProfile(new Profile(profileids[8], "Kazi Naima Sultana", "Naima", "017"));
-            databaseHelper.insertProfile(new Profile(profileids[9], "Ahmed Ullah", "Ahmed", "017"));
-            databaseHelper.insertProfile(new Profile(profileids[10], "Md. Ashraful Haq Rahat", "Rahat", "015"));
+            databaseHelper.insertProfile(new Profile(profileids[0], "Me", "000", "Me"));
+            databaseHelper.insertProfile(new Profile(profileids[1], "Mimma", "016", "Mimma"));
+            databaseHelper.insertProfile(new Profile(profileids[2], "Sakib", "017", "Sakib"));
+            databaseHelper.insertProfile(new Profile(profileids[3], "Naima", "017", "Naima"));
+            databaseHelper.insertProfile(new Profile(profileids[4], "Ahmed", "017", "Ahmed"));
+            databaseHelper.insertProfile(new Profile(profileids[5], "Rahat", "015", "Rahat"));
+            databaseHelper.insertProfile(new Profile(profileids[6], "Mimma Akter", "016", "Mimma"));
+            databaseHelper.insertProfile(new Profile(profileids[7], "Md. Nazmus Sakib", "017", "Sakib"));
+            databaseHelper.insertProfile(new Profile(profileids[8], "Kazi Naima Sultana", "017", "Naima"));
+            databaseHelper.insertProfile(new Profile(profileids[9], "Ahmed Ullah", "017", "Ahmed"));
+            databaseHelper.insertProfile(new Profile(profileids[10], "Md. Ashraful Haq Rahat", "015", "Rahat"));
             String[] quotes = new String[]{
                     "There are more things in heaven and earth Horatio, than are dreamt of in your philosophy",
                     "What is in a name?",
@@ -110,8 +110,14 @@ public class Splash extends AppCompatActivity implements Runnable {
             databaseHelper.insertMessage(new Message(null, profileids[5], profileids[0], quotes[4], String.valueOf(System.currentTimeMillis()), String.valueOf(System.currentTimeMillis())));
             databaseHelper.insertMessage(new Message(null, profileids[0], profileids[5], quotes[0], String.valueOf(System.currentTimeMillis()), String.valueOf(System.currentTimeMillis())));
             databaseHelper.insertMessage(new Message(null, profileids[5], profileids[0], quotes[2], String.valueOf(System.currentTimeMillis()), String.valueOf(System.currentTimeMillis())));
-            databaseHelper.insertMessage(new Message(null, profileids[0], profileids[5], quotes[5], String.valueOf(System.currentTimeMillis()), String.valueOf(System.currentTimeMillis())));
-            databaseHelper.insertMessage(new Message(null, profileids[5], profileids[0], quotes[3], String.valueOf(System.currentTimeMillis()), String.valueOf(System.currentTimeMillis())));
+            databaseHelper.insertMessage(new Message(null, profileids[0], profileids[5], quotes[1], String.valueOf(System.currentTimeMillis()), String.valueOf(System.currentTimeMillis())));
+            databaseHelper.insertMessage(new Message(null, profileids[1], profileids[0], quotes[2], String.valueOf(System.currentTimeMillis()), String.valueOf(System.currentTimeMillis())));
+            databaseHelper.insertMessage(new Message(null, profileids[0], profileids[2], quotes[4], String.valueOf(System.currentTimeMillis()), String.valueOf(System.currentTimeMillis())));
+            databaseHelper.insertMessage(new Message(null, profileids[2], profileids[0], quotes[6], String.valueOf(System.currentTimeMillis()), String.valueOf(System.currentTimeMillis())));
+            databaseHelper.insertMessage(new Message(null, profileids[0], profileids[2], quotes[3], String.valueOf(System.currentTimeMillis()), String.valueOf(System.currentTimeMillis())));
+            databaseHelper.insertMessage(new Message(null, profileids[3], profileids[0], quotes[1], String.valueOf(System.currentTimeMillis()), String.valueOf(System.currentTimeMillis())));
+            databaseHelper.insertMessage(new Message(null, profileids[0], profileids[4], quotes[6], String.valueOf(System.currentTimeMillis()), String.valueOf(System.currentTimeMillis())));
+            databaseHelper.insertMessage(new Message(null, profileids[4], profileids[0], quotes[4], String.valueOf(System.currentTimeMillis()), String.valueOf(System.currentTimeMillis())));
         }
     }
 }
